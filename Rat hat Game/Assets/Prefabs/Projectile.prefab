@@ -172,5 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::projectile
   _lifespan: 10
   _movement_speed: 4
-  _min_movement_speed: 2
+  _min_movement_speed: 4
   _rigidbody: {fileID: 2862282824736847861}

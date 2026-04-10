@@ -1,36 +1,24 @@
 using UnityEditor.UI;
 using UnityEngine;
 
-public class ProjectileEnemy : MonoBehaviour
+public class ProjectileEnemy : enemy
 {
 
-    private playerMovement _target;
-    private float _time;
     private float _distance_to_target;
     private float _projectile_timer;
-    private float _movement_timer;
-    private float _target_x;
-    private float _target_y;
     private float _base_y;
-    private float _horizontal_movement_multiplier;
-    private float _vertical_movement_multiplier;
     private float _seconds_between_force_capping;
     private float _force_capping_timer;
     private float _velocity_height_fluctuation_bound = 1.2f;
 
     [SerializeField] float _max_distance_from_target = 4;
-    [SerializeField] float _amplitude = 2;
-    [SerializeField] float _frequency = 4f;
-
-    [SerializeField] float _movement_speed = 3f;
-
+    [SerializeField] float _amplitude = 4;
+    [SerializeField] float _frequency = 4;
 
     private GameObject _instantiated_projectile;
     [SerializeField] GameObject _projectile;
     [SerializeField] float _seconds_between_projectiles = 1;
-    [SerializeField] float _seconds_between_movement_change = 2;
     [SerializeField] float _projectile_spawn_multiplier = 1.2f;
-    [SerializeField] Rigidbody2D _rigidbody;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,7 +37,7 @@ public class ProjectileEnemy : MonoBehaviour
         _projectile_timer -= Time.deltaTime;
         _seconds_between_force_capping -= Time.deltaTime;
 
-        if (_projectile_timer <= 0)
+        if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
             _projectile_timer = _seconds_between_projectiles;
             _fireAtTarget();
@@ -62,14 +50,14 @@ public class ProjectileEnemy : MonoBehaviour
     {
         _target = gameController.instance.player;
         _move();
-        if (_force_capping_timer < 0)
+        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 
         {
             _force_capping_timer = _seconds_between_force_capping;
             _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _movement_speed;
         }
     }
 
-    void _fireAtTarget()
+    void _fireAtTarget() // instantiates projectile 
     {
         Vector3 line_to_target = _target.transform.position - transform.position;
         line_to_target = Vector3.Normalize(line_to_target);
@@ -79,19 +67,19 @@ public class ProjectileEnemy : MonoBehaviour
 
     void _move()
     {
-        _movement_timer -= Time.deltaTime;
-        if (_movement_timer <= 0)
+        _movement_timer -= Time.deltaTime; 
+        if (_movement_timer <= 0) // every time _movement_timer hits 0, finds new _target_x coordinate to move towards 
         {
-            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _rigidbody.linearVelocity.y * Random.Range(-_velocity_height_fluctuation_bound, _velocity_height_fluctuation_bound));
+            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _rigidbody.linearVelocity.y * Random.Range(-_velocity_height_fluctuation_bound, _velocity_height_fluctuation_bound)); // adds degree of randomization to vertical movement
             _movement_timer = _seconds_between_movement_change;
             _distance_to_target = Vector3.Distance(transform.position, _target.transform.position);
-            if (_distance_to_target > _max_distance_from_target)
+            if (_distance_to_target > _max_distance_from_target) // if too far from player, _target_x is player's x coordinate
             {
                 _target_x = _target.transform.position.x;
             }
             else
             {
-                if (transform.position.x > 0){
+                if (transform.position.x > 0){ // if not too far from player, _target_x is the farthest edge of the map
                     _target_x = -8;
                 }
                 else
@@ -100,7 +88,7 @@ public class ProjectileEnemy : MonoBehaviour
                 }
             }
 
-            if (_target_x > transform.position.x)
+            if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
             {
                 _horizontal_movement_multiplier = 1.5f;
             }
@@ -111,9 +99,9 @@ public class ProjectileEnemy : MonoBehaviour
 
         }
 
-        _target_y = _base_y + Mathf.Sin(_time * _frequency) * _amplitude;
+        _target_y = _base_y + Mathf.Sin(_time * _frequency) * _amplitude; // _target_y is updated every frame based on a sine wave and the current time 
 
-        if (_target_y > transform.position.y)
+        if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
             _vertical_movement_multiplier = 1;
         }
@@ -122,7 +110,7 @@ public class ProjectileEnemy : MonoBehaviour
             _vertical_movement_multiplier = -1;
         }
 
-        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier, _vertical_movement_multiplier * _amplitude));
+        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier, _vertical_movement_multiplier * _amplitude)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
 
 }
