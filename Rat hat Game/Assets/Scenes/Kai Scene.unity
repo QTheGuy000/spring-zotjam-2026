@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &256298828
 SpriteRenderer:
   serializedVersion: 2
@@ -486,15 +486,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce466b3f0d6e264c991464fe4ad669f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileEnemy
+  _seconds_between_movement_change: 2
   _movement_speed: 3
+  _rigidbody: {fileID: 256298831}
   _max_distance_from_target: 4
   _amplitude: 4
   _frequency: 4
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
-  _seconds_between_movement_change: 2
   _projectile_spawn_multiplier: 1.2
-  _rigidbody: {fileID: 256298831}
 --- !u!1 &1118087902
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 1469402728}
   - component: {fileID: 1469402727}
   m_Layer: 0
-  m_Name: Projectile Enemy (1)
+  m_Name: melee enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,8 +896,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edeca9ce800c84446a923f5058a99006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::meleeEnemy
+  _seconds_between_movement_change: 2
   _movement_speed: 3
-  _movement_curve_flatenning_factor: 0
+  _rigidbody: {fileID: 1469402729}
+  _movement_curve_flatenning_factor: 10
 --- !u!50 &1469402729
 Rigidbody2D:
   serializedVersion: 5
@@ -993,7 +995,7 @@ Transform:
   m_GameObject: {fileID: 1469402726}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.36, y: -1.83, z: 0}
+  m_LocalPosition: {x: -8.2, y: 4.19, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []

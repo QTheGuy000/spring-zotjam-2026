@@ -87,30 +87,32 @@ public class ProjectileEnemy : enemy
                     _target_x = 8;
                 }
             }
-
-            if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
-            {
-                _horizontal_movement_multiplier = 1.5f;
-            }
-            else
-            {
-                _horizontal_movement_multiplier = -1.5f;
-            }
-
         }
 
         _target_y = _base_y + Mathf.Sin(_time * _frequency) * _amplitude; // _target_y is updated every frame based on a sine wave and the current time 
 
+        _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
+        _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
+
         if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
-            _vertical_movement_multiplier = 1;
+            _vertical_movement_multiplier = 1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
         }
         else
         {
-            _vertical_movement_multiplier = -1;
+            _vertical_movement_multiplier = -1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
         }
 
-        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier, _vertical_movement_multiplier * _amplitude)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+        if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
+        {
+            _horizontal_movement_multiplier = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+        }
+        else
+        {
+            _horizontal_movement_multiplier = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+        }
+
+        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier * _movement_speed, _vertical_movement_multiplier * _amplitude * _movement_speed)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
 
 }
