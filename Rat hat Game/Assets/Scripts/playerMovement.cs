@@ -1,62 +1,109 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
+using Unity.Mathematics;
 
 public class playerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private int maxhealth = 3;
-    private int currentHealth;
     public float speed = 5.0f;
     public float bounceAmount;
     public float moveAmount;
-    private float jumpAmount = 500f;
+    public float dashAmount;
+    public float jumpVelocity = 10f;
+    public float doubleJumpVelocity = 5f;
     public float knockbackForce;
-    [SerializeField] public List<Image> uiImageList;
+    playerStats pStats;
 
+    private bool fell = false;
     public bool isGrounded = true;
+    private bool doubleJump = true;
+    private bool dashReady = true;
+    private float dashDecay = 0.99f;
+    Vector2 moveVelocity;
+    Vector2 dashVelocity;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHealth = maxhealth;
+        pStats = GetComponent<playerStats>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY);
+        moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY);
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Input.GetAxisRaw("Horizontal") != 0 && dashReady)
+        {
+            dashVelocity = new Vector2(dashAmount * Input.GetAxisRaw("Horizontal"), 0);
+            dashReady = false;
+            Debug.Log("Dash");
+        }
+        if(Mathf.Abs(dashVelocity.x) > 0.1)
+        {
+            dashVelocity = new Vector2(dashVelocity.x * dashDecay, 0);
+        }
+        else
+        {
+            dashVelocity = new Vector2(0, 0);
+        }
+        Debug.Log(rb.linearVelocityX);
+        if (moveVelocity.x != 0)
+        {
+            rb.linearVelocity = moveVelocity + dashVelocity;
+        }
+        else
+        {
+            rb.linearVelocityX = 0;
+        }
         // Jump
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) && isGrounded){
-            rb.AddForce(Vector2.up * jumpAmount);
-            isGrounded = false;
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)){
+            if (isGrounded)
+            {
+                rb.linearVelocityY = jumpVelocity;
+                isGrounded = false;
+            }
+            else if(doubleJump && rb.linearVelocityY < 0)
+            {
+                rb.linearVelocityY = doubleJumpVelocity;
+                doubleJump = false;
+            }
+        }
+        if(0 > Camera.main.WorldToViewportPoint(transform.position).y && !fell)
+        {
+            fell = true;
+            pStats.decreaseHealth();
+            StartCoroutine(BounceBackCoroutine());
+
+        }
+        if (0 < Camera.main.WorldToViewportPoint(transform.position).y && fell)
+        {
+            fell = false;
         }
         //rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY), moveAmount);
+    }
+
+    IEnumerator BounceBackCoroutine()
+    {
+        float gravityScale = rb.gravityScale;
+        rb.gravityScale = 0;
+        yield return new WaitForSeconds(1);
+        rb.gravityScale = gravityScale;
+        rb.linearVelocityY = jumpVelocity * 2;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Hat") || collision.gameObject.CompareTag("Platform")){
             isGrounded = true;
+            doubleJump = true;
+            dashReady = true;
         }
         if(collision.gameObject.CompareTag("Hat"))
         {
             // Bounces only if parry
             //rb.AddForce(Vector2.up * bounceAmount);
-        }
-        if (collision.gameObject.CompareTag("Projectile"))
-        {
-            projectile pr = collision.gameObject.GetComponent<projectile>();
-            if (!pr.checkIsDeflected())
-            {
-                Debug.Log(pr.checkIsDeflected());
-                uiImageList[currentHealth - 1].enabled = false;
-                currentHealth--;
-                Vector2 dir = collision.contacts[0].normal;
-                dir = new Vector2(dir.x * 10, dir.y);
-                rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
-            }
-
         }
     }
 }
