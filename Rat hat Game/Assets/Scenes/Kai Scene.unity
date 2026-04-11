@@ -876,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vertical Projectile Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 263453839714714208, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3076467122678976263, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.79
@@ -933,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5945344061379124843, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7305774649913622597, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.16
@@ -972,6 +980,18 @@ PrefabInstance:
     - target: {fileID: 7305774649913622597, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075023115376287818, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
+      propertyPath: _amplitude
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075023115376287818, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
+      propertyPath: _vertical_acceleration_multiplier
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075023115376287818, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
+      propertyPath: _horizontal_acceleration_multiplier
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
