@@ -5,6 +5,8 @@ public class enemy : MonoBehaviour
     protected playerMovement _target;
     protected float _target_x;
     protected float _target_y;
+    protected float _distance_to_target_x;
+    protected float _distance_to_target_y;
     protected float _time;
     protected float _movement_timer;
     protected float _horizontal_movement_multiplier;
