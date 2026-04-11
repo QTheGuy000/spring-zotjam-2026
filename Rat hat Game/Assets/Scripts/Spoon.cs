@@ -84,4 +84,9 @@ public class Spoon: MonoBehaviour
             touchingProjectile = null;
         }
     }
+
+    public bool checkIfSwinging()
+    {
+        return isSwinging;
+    }
 }
