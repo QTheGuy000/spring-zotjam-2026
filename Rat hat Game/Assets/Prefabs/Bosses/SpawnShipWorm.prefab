@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7282302084422278313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4037940074676295868}
+  - component: {fileID: 363061894161557506}
+  m_Layer: 0
+  m_Name: SpawnShipWorm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4037940074676295868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282302084422278313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31, y: 2.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &363061894161557506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282302084422278313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c701e665cbdaf943b0c2e73e2269000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _worm_segment_list:
+  - {fileID: 2349618745685720359, guid: 479a45a35db20f84cb26cb966ac74c9e, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}
+  - {fileID: 6523268128328002623, guid: bb9fa0445325a824b8815d06c39957e7, type: 3}

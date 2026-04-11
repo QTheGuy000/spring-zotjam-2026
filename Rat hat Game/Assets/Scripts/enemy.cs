@@ -26,6 +26,7 @@ public class enemy : MonoBehaviour
     [SerializeField] protected Rigidbody2D _rigidbody;
     [SerializeField] protected int _health;
     public bool isDead = false;
+    public float chaos_factor = 0;
 
 
     void _checkHealth()

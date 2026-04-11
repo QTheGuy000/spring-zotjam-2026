@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _projectile: {fileID: 5788574240438320761, guid: 5d0c02d7be2954b4081f8a77be824731, type: 3}
-  _distance_from_center: 3
-  _projectile_count: 10
+  _distance_from_center: 2
+  _projectile_count: 4
   _clockwise: 1
