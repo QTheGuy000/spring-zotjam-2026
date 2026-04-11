@@ -18,5 +18,24 @@ public class enemy : MonoBehaviour
     [SerializeField] protected float _seconds_between_movement_change = 2;
     [SerializeField] protected float _movement_speed = 3f;
     [SerializeField] protected Rigidbody2D _rigidbody;
+    [SerializeField] protected int _health;
     public bool isDead = false;
+
+
+    void _checkHealth()
+    {
+        if (_health < 0)
+        {
+            isDead = true;
+            transform.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void receiveDamage(int damage_amount)
+    {
+        _health -= damage_amount;
+        _checkHealth();
+    }
+
 }
