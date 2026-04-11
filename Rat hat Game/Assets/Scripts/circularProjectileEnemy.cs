@@ -80,8 +80,8 @@ public class circularProjectileEnemy : enemy
 
     void _move()
     {
-        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles);
-        _target_y = _circle_center.y - _radius * Mathf.Sin(_angles);
+        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles * Mathf.Deg2Rad);
+        _target_y = _circle_center.y - _radius * Mathf.Sin(_angles * Mathf.Deg2Rad);
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
@@ -105,7 +105,6 @@ public class circularProjectileEnemy : enemy
         }
 
         _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
-        //_rigidbody.linearVelocity = new Vector2(_horizontal_movement_additive, _vertical_movement_additive);
     }
 
 }
