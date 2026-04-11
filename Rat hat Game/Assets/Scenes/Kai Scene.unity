@@ -336,7 +336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &256298828
 SpriteRenderer:
   serializedVersion: 2
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::verticalProjectileEnemy
   _vertical_acceleration_multiplier: 1.5
-  _horizontal_acceleration_multiplier: 1
+  _horizontal_acceleration_multiplier: 30
   _seconds_between_movement_change: 2
   _movement_speed: 3
   _rigidbody: {fileID: 1251459514}

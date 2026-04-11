@@ -81,6 +81,9 @@ public class verticalProjectileEnemy : enemy
 
         _target_x = _base_x + Mathf.Sin(_time * _frequency) * _amplitude; // _target_x is updated every frame based on a sine wave and the current time 
 
+        _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
+        _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
+
         if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
             _vertical_movement_additive = _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier; ;
@@ -90,6 +93,7 @@ public class verticalProjectileEnemy : enemy
             _vertical_movement_additive = -1 * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier; ;
         }
 
+
         if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
         {
             _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
@@ -98,6 +102,7 @@ public class verticalProjectileEnemy : enemy
         {
             _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
         }
+
 
         _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
