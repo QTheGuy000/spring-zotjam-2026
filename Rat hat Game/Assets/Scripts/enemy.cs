@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
+
+    protected float _screen_lower_bound = -4.25f;
+    protected float _screen_upper_bound = 4.25f;
+    protected float _hat_top_bound = -3.00f;
+    protected int _screen_count = 1;
+    protected float _screen_height = 10f;
     protected playerMovement _target;
     protected float _target_x;
     protected float _target_y;

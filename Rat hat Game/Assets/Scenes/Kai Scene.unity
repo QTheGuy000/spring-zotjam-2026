@@ -807,26 +807,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144584922407593001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414865228186208965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3c133eadf05e448b93906ff02804ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::directMeleeEnemy
-  _vertical_acceleration_multiplier: 3
-  _horizontal_acceleration_multiplier: 8
-  _seconds_between_force_capping: 2
-  _seconds_between_movement_change: 4
-  _movement_speed: 3
-  _rigidbody: {fileID: 3254447845564805882}
-  _health: 0
-  isDead: 0
 --- !u!1 &414865228186208965
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,14 +819,14 @@ GameObject:
   - component: {fileID: 4492124135363390973}
   - component: {fileID: 3254447845564805882}
   - component: {fileID: 6337228062152205847}
-  - component: {fileID: 144584922407593001}
+  - component: {fileID: 8694935914400918360}
   m_Layer: 0
   m_Name: Vertical Melee Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &3254447845564805882
 Rigidbody2D:
   serializedVersion: 5
@@ -1048,7 +1028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6796305026566724825, guid: ab47ee5b2a5b98a41a3e53618eb39737, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1244,12 +1224,32 @@ Transform:
   m_GameObject: {fileID: 414865228186208965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.12, y: 1.9, z: 0}
+  m_LocalPosition: {x: -6.42, y: -2.37, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8694935914400918360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414865228186208965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150cc634a73a1b542ab60ff8af60507f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::verticalMeleeEnemy
+  _vertical_acceleration_multiplier: 8
+  _horizontal_acceleration_multiplier: 12
+  _seconds_between_force_capping: 2
+  _seconds_between_movement_change: 0.25
+  _movement_speed: 3
+  _rigidbody: {fileID: 3254447845564805882}
+  _health: 0
+  isDead: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

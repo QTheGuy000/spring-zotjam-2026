@@ -5,13 +5,14 @@ public class meleeEnemy : enemy
 
     [SerializeField] float _movement_curve_flatenning_factor;
 
-    private float _minimum_height = 4.00f;
+    private float _minimum_height;
     private float _curve_center_x;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _minimum_height = _screen_upper_bound - 1;
         _target = gameController.instance.player;
         _seconds_between_force_capping = 3f; 
     }
@@ -52,7 +53,7 @@ public class meleeEnemy : enemy
             }
         }
 
-        _target_y = (Mathf.Pow(transform.position.x - _curve_center_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
+        _target_y = ( (_screen_count -1 ) * _screen_height ) + (Mathf.Pow(transform.position.x - _curve_center_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);

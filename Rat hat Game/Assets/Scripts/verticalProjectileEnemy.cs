@@ -67,11 +67,11 @@ public class verticalProjectileEnemy : enemy
             _movement_timer = _seconds_between_movement_change;
 
                 if (transform.position.y > 0){ // if not too far from player, _target_y is the farthest edge of the map
-                    _target_y = -4;
+                    _target_y = _screen_lower_bound;
                 }
                 else
                 {
-                    _target_y = 4;
+                    _target_y = _screen_upper_bound;
                 }
         }
 

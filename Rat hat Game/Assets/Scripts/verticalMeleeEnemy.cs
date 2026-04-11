@@ -3,11 +3,18 @@ using UnityEngine;
 public class verticalMeleeEnemy : enemy
 {
 
-    [SerializeField] float _movement_curve_flatenning_factor;
+    private bool _recently_hit_player = false;
+    private float _max_height = 3.6f;
+    private float _falling_down_force_multiplier = 1.25f;
 
-    private float _minimum_height = 4.00f;
-    private float _curve_center_x;
+    enum verticalEnemyState
+    {
+        movingUp,
+        movingHorizontal,
+        movingDown
+    }
 
+    private verticalEnemyState _currentState = verticalEnemyState.movingUp;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,44 +45,99 @@ public class verticalMeleeEnemy : enemy
 
     void _move()
     {
+
         if (_movement_timer < 0)
         {
             _movement_timer = _seconds_between_movement_change;
-            _curve_center_x = _target.transform.position.x;
-            if (transform.position.x < 0)
+            _target_x = _target.transform.position.x; // player x is always targeted
+
+            if (transform.position.y < _max_height || _recently_hit_player == true) // target roof 
             {
-                _target_x = 10;
+                if (_currentState == verticalEnemyState.movingDown && _recently_hit_player == false)
+                {
+                    if (transform.position.y < _hat_top_bound)
+                    {
+                        _target_y = _screen_upper_bound;
+                        _currentState = verticalEnemyState.movingUp;
+                    }
+                }
+                else
+                {
+                    _target_y = _screen_upper_bound;
+                    _currentState = verticalEnemyState.movingUp;
+                }
             }
-            else
+
+
+            if (transform.position.y >= _max_height) // target player x only
             {
-                _target_x = -10;
+                _currentState = verticalEnemyState.movingHorizontal;
+                _recently_hit_player = false;
             }
+
         }
 
-        _target_y = (Mathf.Pow(transform.position.x - _curve_center_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
+        if (_recently_hit_player == false && Mathf.Abs(transform.position.x - _target.transform.position.x) < 0.3f && transform.position.y > _target.transform.position.y) // target player y when directly above
+        {
+            _currentState = verticalEnemyState.movingDown;
+            _recently_hit_player = false;
+            _target_y = _screen_lower_bound;
+        }
+
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
 
-        if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
+
+        if (_currentState == verticalEnemyState.movingUp || _currentState == verticalEnemyState.movingDown)
         {
-            _vertical_movement_additive = _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier;
+            if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
+            {
+                _vertical_movement_additive = _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier;
+            }
+            else
+            {
+                _vertical_movement_additive = -1 * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier * _falling_down_force_multiplier;
+
+                if (Mathf.Abs(transform.position.y - _target_y) < 0.2f)
+                {
+                    _vertical_movement_additive = 0f;
+                }
+            }
         }
         else
         {
-            _vertical_movement_additive = -1f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier;
+            _vertical_movement_additive = 0;
         }
 
-        if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
+        if (_currentState == verticalEnemyState.movingHorizontal)
         {
-            _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
+            if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
+            {
+                _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
+            }
+            else
+            {
+                _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
+            }
         }
         else
         {
-            _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
+            _horizontal_movement_additive = 0;
         }
 
         _rigidbody.linearVelocity = (new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+        Debug.Log(_currentState.ToString() + _horizontal_movement_additive.ToString());
+    }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _recently_hit_player = true;
+            _currentState = verticalEnemyState.movingUp;
+            _target_y = _screen_upper_bound;
+        }
     }
 }
