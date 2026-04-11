@@ -952,8 +952,9 @@ GameObject:
   - component: {fileID: 1451231701}
   - component: {fileID: 1451231700}
   - component: {fileID: 1451231702}
-  - component: {fileID: 1451231703}
   - component: {fileID: 1451231704}
+  - component: {fileID: 1451231703}
+  - component: {fileID: 1451231705}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1075,15 +1076,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bfdb5b4b6eebf448301b87c3ef401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxhealth: 3
   speed: 5
   bounceAmount: 500
-  moveAmount: 5
+  moveAmount: 100
+  dashAmount: 10
+  jumpVelocity: 10
+  doubleJumpVelocity: 5
   knockbackForce: 10
-  uiImageList:
-  - {fileID: 544460733}
-  - {fileID: 1088493692}
-  - {fileID: 518390174}
+  maxSpeed: 10
+  isGrounded: 1
 --- !u!70 &1451231704
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1121,6 +1122,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1451231705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451231699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2291aac5e8bc2b4fbb29180a3b93721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  knockbackForce: 0
+  maxhealth: 3
+  uiImageList:
+  - {fileID: 544460733}
+  - {fileID: 1088493692}
+  - {fileID: 518390174}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
