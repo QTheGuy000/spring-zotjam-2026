@@ -5,6 +5,7 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public float speed = 5.0f;
     public float bounceAmount;
+    public float moveAmount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,14 +15,7 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.A))
-        {
-            transform.position += transform.right * -speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position -= transform.right * -speed * Time.deltaTime;
-        }
+         rb.linearVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
