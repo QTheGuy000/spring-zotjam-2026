@@ -21,6 +21,14 @@ public class followleaderProjectileEnemy : enemy
     {
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
+
+        if (chaos_factor != 0)
+        {
+            _seconds_between_projectiles += chaos_factor;
+            _projectile_timer += Random.Range(0, Mathf.Abs(chaos_factor));
+        }
+
+
     }
 
     // Update is called once per frame
