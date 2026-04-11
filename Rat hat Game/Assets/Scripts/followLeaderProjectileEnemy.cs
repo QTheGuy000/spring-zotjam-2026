@@ -1,16 +1,14 @@
 using UnityEditor.UI;
 using UnityEngine;
 
-public class circularProjectileEnemy : enemy 
+public class followleaderProjectileEnemy : enemy
 {
+
     private float _projectile_timer;
-    private float _angles = 0;
-    private Vector2 _circle_center;
-    
-    [SerializeField] float _radius = 2;
-    [SerializeField] float _angles_per_second = 25;
-    [SerializeField] bool _clockwise = true;
-    [SerializeField] public bool random_circle_center = true;
+    private float _velocity_height_fluctuation_bound = 1.2f;
+
+    [SerializeField] public GameObject leader;
+
 
     private GameObject _instantiated_projectile;
     [SerializeField] GameObject _projectile;
@@ -23,29 +21,6 @@ public class circularProjectileEnemy : enemy
     {
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
-        if (random_circle_center == true)
-        {
-            _circle_center = new Vector2(Random.Range(-5, 5), Random.Range(-2, 2));
-            _circle_center = new Vector2(_circle_center.x + (_screen_count - 1) * _screen_height, _circle_center.y + (_screen_count - 1) * _screen_height);
-        }
-        
-        if (chaos_factor != 0)
-        {
-            _radius += Random.Range(-chaos_factor, chaos_factor);
-            if (Random.Range(0, 1) == 1)
-            {
-                _clockwise = false;
-            }
-
-            _angles_per_second = Random.Range(15, 35);
-            _seconds_between_projectiles += Random.Range(-chaos_factor, chaos_factor);
-            _movement_speed *= Random.Range(1, 3);
-            Debug.Log(_angles_per_second);
-        }
-
-
-        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles * Mathf.Deg2Rad);
-        _target_y = _circle_center.y - _radius * Mathf.Sin(_angles * Mathf.Deg2Rad);
     }
 
     // Update is called once per frame
@@ -54,20 +29,6 @@ public class circularProjectileEnemy : enemy
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
-        if (Vector2.Distance(transform.position, new Vector2(_target_x, _target_y)) < 0.5f) // only increases angle if close to target
-        {
-            if (_clockwise)
-            {
-                _angles -= Time.deltaTime * _angles_per_second;
-            }
-            else
-            {
-                _angles += Time.deltaTime * _angles_per_second;
-            }
-
-        }
-
-
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
@@ -99,8 +60,27 @@ public class circularProjectileEnemy : enemy
 
     void _move()
     {
-        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles * Mathf.Deg2Rad);
-        _target_y = _circle_center.y + _radius * Mathf.Sin(_angles * Mathf.Deg2Rad);
+        _movement_timer -= Time.deltaTime;
+        if (_movement_timer <= 0) // every time _movement_timer hits 0, finds new _target_x coordinate to move towards 
+        {
+            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _rigidbody.linearVelocity.y * Random.Range(-_velocity_height_fluctuation_bound, _velocity_height_fluctuation_bound)); // adds degree of randomization to vertical movement
+            _movement_timer = _seconds_between_movement_change;
+
+            if (leader != null)
+            {
+
+                _target_x = leader.transform.position.x;
+                _target_y = leader.transform.position.y;
+
+            }
+
+            else
+            {
+                _target_x = Random.Range(-8, 8);
+                _target_y = Random.Range(-4, 4);
+            }
+
+        }
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
@@ -123,13 +103,7 @@ public class circularProjectileEnemy : enemy
             _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
         }
 
-        _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
-
-        if (random_circle_center == false)
-        {
-            _rigidbody.linearVelocity = new Vector2(_horizontal_movement_additive, _vertical_movement_additive);
-        }
-
+        _rigidbody.linearVelocity = (new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
 
 }
