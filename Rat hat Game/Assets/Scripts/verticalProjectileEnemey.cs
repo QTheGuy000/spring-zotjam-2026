@@ -4,10 +4,8 @@ using UnityEngine;
 public class verticalProjectileEnemy : enemy
 {
 
-    private float _distance_to_target;
     private float _projectile_timer;
     private float _base_x;
-    private float _velocity_height_fluctuation_bound = 1.2f;
 
     [SerializeField] float _max_distance_from_target = 4;
     [SerializeField] float _amplitude = 4;
@@ -23,7 +21,7 @@ public class verticalProjectileEnemy : enemy
     void Start()
     {
         _projectile_timer = _seconds_between_projectiles;
-        _seconds_between_force_capping = 2 / _frequency;
+        _seconds_between_force_capping = 1;
         _force_capping_timer = _seconds_between_force_capping;
         _base_x = transform.position.x;
     }
@@ -33,7 +31,7 @@ public class verticalProjectileEnemy : enemy
     {
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
-        _seconds_between_force_capping -= Time.deltaTime;
+        _force_capping_timer -= Time.deltaTime;
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
@@ -48,7 +46,7 @@ public class verticalProjectileEnemy : enemy
     {
         _target = gameController.instance.player;
         _move();
-        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 
+        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by _movement_speed
         {
             _force_capping_timer = _seconds_between_force_capping;
             _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _movement_speed;
@@ -105,6 +103,7 @@ public class verticalProjectileEnemy : enemy
 
 
         _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+
     }
 
 }

@@ -33,7 +33,7 @@ public class ProjectileEnemy : enemy
     {
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
-        _seconds_between_force_capping -= Time.deltaTime;
+        _force_capping_timer -= Time.deltaTime;
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {

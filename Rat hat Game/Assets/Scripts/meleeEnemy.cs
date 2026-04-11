@@ -32,6 +32,7 @@ public class meleeEnemy : enemy
         {
             _force_capping_timer = _seconds_between_force_capping;
             _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _movement_speed;
+
         }
     }
 
@@ -75,5 +76,6 @@ public class meleeEnemy : enemy
         }
 
         _rigidbody.linearVelocity = (new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+
     }
 }
