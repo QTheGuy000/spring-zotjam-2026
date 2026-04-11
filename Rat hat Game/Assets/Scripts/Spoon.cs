@@ -16,6 +16,8 @@ public class Spoon: MonoBehaviour
     private bool isSwinging = false;
     public float swingCooldown = 0.5f;
 
+    private bool touchingHat = false;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -60,9 +62,17 @@ public class Spoon: MonoBehaviour
         // Deflects Projectile (if exists).
         if (touchingProjectile != null){
             // Sets the direction of the bullet away from the spoon's direction. 
+            Vector2 spoonDirection = (transform.position - player.position).normalized;
             Vector2 deflectDirection = transform.up;
-            touchingProjectile.Deflect(deflectDirection);
+            touchingProjectile.Deflect(spoonDirection);
             Debug.Log("Deflect!");
+        }
+        // Bounce off hat.
+        if (touchingHat){
+            Vector2 spoonDirection = (transform.position - player.position).normalized;
+            player.GetComponent<Rigidbody2D>().AddForce(-spoonDirection * 500);
+            Debug.Log("Bounce!");
+            touchingHat = false;
         }
         // Waits before letting next swing. 
         yield return new WaitForSeconds(swingCooldown);
@@ -76,12 +86,18 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Projectile")){
             touchingProjectile = other.GetComponent<projectile>();
         }
+        if (other.CompareTag("Hat")){
+            touchingHat = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Projectile")){
             touchingProjectile = null;
+        }
+        if (other.CompareTag("Hat")){
+            touchingHat = false;
         }
     }
 

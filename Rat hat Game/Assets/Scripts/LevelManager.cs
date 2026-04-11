@@ -1,5 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
+using System.Collections.Generic;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,6 +24,14 @@ public class LevelManager : MonoBehaviour
 
     private LevelManager instance;
 
+    public GameObject lincolnDialogue;
+    private List<string> dialogues = new(){
+        "I am the 16th President!",
+        "I was the tallest President!",
+        "I signed the Emancimation Proclaimation!",
+        "My favorite meal is the Chicken Fricassee!"
+    };
+
     private void Awake()
     {
         if (instance == null)
@@ -30,12 +43,16 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
+        Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
+        Button quitButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
 
-    }
+        continueButton.onClick.AddListener(() => TogglePause());
+        menuButton.onClick.AddListener(() => GoToMenu());
+        quitButton.onClick.AddListener(() => QuitGame());
 
-    void Start()
-    {
         pauseMenu.SetActive(false);
+        lincolnDialogue.SetActive(false);
 
         // Disables all other levels
         for (int c = 1; c < transform.childCount; c++)
@@ -47,6 +64,13 @@ public class LevelManager : MonoBehaviour
         GameObject firstLevel = transform.GetChild(0).gameObject;
         firstLevel.SetActive(true);
         PopulateEnemies(firstLevel);
+        StartCoroutine(ActivateEnemies());
+    }
+
+    void Start()
+    {
+        
+        
     }
 
     void Update()
@@ -95,6 +119,9 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator NextLevel()
     {
+        // Lincoln speaks truth first.
+        yield return StartCoroutine(LincolnSpeaks());
+
         isTransitioning = true;
         currentLevel++;
 
@@ -140,6 +167,22 @@ public class LevelManager : MonoBehaviour
         isTransitioning = false;
     }
 
+    IEnumerator LincolnSpeaks(){
+        lincolnDialogue.SetActive(true);
+
+        string text = dialogues[currentLevel];
+        GameObject textbox = lincolnDialogue.transform.GetChild(0).gameObject;
+        TextAnimation textanim = textbox.GetComponent<TextAnimation>();
+
+        textanim.dialogues.Clear();  // Clear first
+        textanim.AddDialogue(text);  // Then add
+
+        yield return StartCoroutine(textanim.RevealText()); // Then run
+
+        yield return new WaitForSeconds(1f);
+        lincolnDialogue.SetActive(false);
+    }
+
     bool AllEnemiesDead()
     {
         if (enemies == null || enemies.Length == 0) return false;
@@ -167,6 +210,10 @@ public class LevelManager : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
+    }
+
+    public void GoToMenu(){
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MenuScreen"));
     }
 
     // Closes the game
