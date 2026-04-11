@@ -486,6 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce466b3f0d6e264c991464fe4ad669f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileEnemy
+  _vertical_acceleration_multiplier: 1.5
+  _horizontal_acceleration_multiplier: 1
   _seconds_between_movement_change: 2
   _movement_speed: 3
   _rigidbody: {fileID: 256298831}
@@ -837,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1469402727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -896,10 +898,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edeca9ce800c84446a923f5058a99006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::meleeEnemy
-  _seconds_between_movement_change: 2
-  _movement_speed: 3
+  _vertical_acceleration_multiplier: 30
+  _horizontal_acceleration_multiplier: 8
+  _seconds_between_movement_change: 4
+  _movement_speed: 8
   _rigidbody: {fileID: 1469402729}
-  _movement_curve_flatenning_factor: 10
+  _movement_curve_flatenning_factor: 15
 --- !u!50 &1469402729
 Rigidbody2D:
   serializedVersion: 5
@@ -926,7 +930,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1469402730
 SpriteRenderer:
   serializedVersion: 2
