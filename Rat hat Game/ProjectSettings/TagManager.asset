@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Spoon
   - Hat
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1499043459
+    locked: 0
+  - name: Midground
+    uniqueID: 299040413
+    locked: 0
+  - name: Actors
+    uniqueID: 856290323
+    locked: 0
+  - name: Tools
+    uniqueID: 2437651977
+    locked: 0
+  - name: Projectiles
+    uniqueID: 4240585629
+    locked: 0
+  - name: UI
+    uniqueID: 885325411
     locked: 0
   m_RenderingLayers:
   - Default

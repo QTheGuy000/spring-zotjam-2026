@@ -1,17 +1,15 @@
 using UnityEditor.UI;
 using UnityEngine;
 
-public class ProjectileEnemy : enemy
+public class circularProjectileEnemy : enemy 
 {
-
-    private float _distance_to_target;
     private float _projectile_timer;
-    private float _base_y;
-    private float _velocity_height_fluctuation_bound = 1.2f;
+    private float _angles = 0;
+    private Vector2 _circle_center;
+    [SerializeField] float _radius = 2;
+    [SerializeField] float _angles_per_second = 25;
+    [SerializeField] bool _clockwise = true;
 
-    [SerializeField] float _max_distance_from_target = 4;
-    [SerializeField] float _amplitude = 4;
-    [SerializeField] float _frequency = 4;
 
     private GameObject _instantiated_projectile;
     [SerializeField] GameObject _projectile;
@@ -24,7 +22,10 @@ public class ProjectileEnemy : enemy
     {
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
-        _base_y = transform.position.y;
+        _circle_center = new Vector2(Random.Range(-5, 5), Random.Range(-2, 2));
+        _circle_center = new Vector2(_circle_center.x + (_screen_count - 1) * _screen_height, _circle_center.y + (_screen_count - 1) * _screen_height);
+        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles);
+        _target_y = _circle_center.y - _radius * Mathf.Sin(_angles);
     }
 
     // Update is called once per frame
@@ -33,6 +34,21 @@ public class ProjectileEnemy : enemy
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
+        if (Vector2.Distance(transform.position, new Vector2(_target_x, _target_y)) < 0.5f) // only increases angle if close to target
+        {
+            if (_clockwise)
+            {
+                _angles += Time.deltaTime * _angles_per_second;
+            }
+            else
+            {
+                _angles -= Time.deltaTime * _angles_per_second;
+            }
+
+        }
+
+
+        Debug.Log(_angles);
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
@@ -64,29 +80,8 @@ public class ProjectileEnemy : enemy
 
     void _move()
     {
-        _movement_timer -= Time.deltaTime; 
-        if (_movement_timer <= 0) // every time _movement_timer hits 0, finds new _target_x coordinate to move towards 
-        {
-            _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _rigidbody.linearVelocity.y * Random.Range(-_velocity_height_fluctuation_bound, _velocity_height_fluctuation_bound)); // adds degree of randomization to vertical movement
-            _movement_timer = _seconds_between_movement_change;
-            _distance_to_target = Vector3.Distance(transform.position, _target.transform.position);
-            if (_distance_to_target > _max_distance_from_target) // if too far from player, _target_x is player's x coordinate
-            {
-                _target_x = _target.transform.position.x;
-            }
-            else
-            {
-                if (transform.position.x > 0){ // if not too far from player, _target_x is the farthest edge of the map
-                    _target_x = -8;
-                }
-                else
-                {
-                    _target_x = 8;
-                }
-            }
-        }
-
-        _target_y = _base_y + Mathf.Sin(_time * _frequency) * _amplitude; // _target_y is updated every frame based on a sine wave and the current time 
+        _target_x = _circle_center.x + _radius * Mathf.Cos(_angles * Mathf.Deg2Rad);
+        _target_y = _circle_center.y - _radius * Mathf.Sin(_angles * Mathf.Deg2Rad);
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);

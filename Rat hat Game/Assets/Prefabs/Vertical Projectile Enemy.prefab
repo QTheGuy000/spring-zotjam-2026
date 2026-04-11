@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &263453839714714208
+--- !u!1 &2700917610057684739
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3076467122678976263}
-  - component: {fileID: 7361041881314810289}
-  - component: {fileID: 1507496972203678703}
-  - component: {fileID: 231099105128223215}
-  - component: {fileID: 3211900426346705461}
+  - component: {fileID: 5872501240572069376}
+  - component: {fileID: 5397150419195460645}
+  - component: {fileID: 6101342037826594834}
+  - component: {fileID: 3452579422274406589}
+  - component: {fileID: 1293984763007520029}
   m_Layer: 0
   m_Name: Vertical Projectile Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3076467122678976263
+  m_IsActive: 0
+--- !u!4 &5872501240572069376
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263453839714714208}
+  m_GameObject: {fileID: 2700917610057684739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.79, y: -0.68, z: 0}
+  m_LocalPosition: {x: -6.55, y: -0.87, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7361041881314810289
+--- !u!212 &5397150419195460645
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263453839714714208}
+  m_GameObject: {fileID: 2700917610057684739}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 856290323
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7510279668340973109, guid: ac34220195976864e9f226398b6f4464, type: 3}
@@ -94,13 +94,13 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &1507496972203678703
+--- !u!58 &6101342037826594834
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263453839714714208}
+  m_GameObject: {fileID: 2700917610057684739}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -130,14 +130,14 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!50 &231099105128223215
+--- !u!50 &3452579422274406589
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263453839714714208}
+  m_GameObject: {fileID: 2700917610057684739}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -157,24 +157,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3211900426346705461
+--- !u!114 &1293984763007520029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263453839714714208}
+  m_GameObject: {fileID: 2700917610057684739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a610eafa902729498defa6b14365e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f50395b70766cd4f89b187e73aaf3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::verticalProjectileEnemy
-  _vertical_acceleration_multiplier: 1.5
-  _horizontal_acceleration_multiplier: 30
+  _vertical_acceleration_multiplier: 2
+  _horizontal_acceleration_multiplier: 2
+  _seconds_between_force_capping: 1
   _seconds_between_movement_change: 2
-  _movement_speed: 3
-  _rigidbody: {fileID: 231099105128223215}
-  _max_distance_from_target: 4
+  _movement_speed: 2
+  _rigidbody: {fileID: 3452579422274406589}
+  _health: 0
+  isDead: 0
   _amplitude: 1
   _frequency: 2
   _projectile: {fileID: 1389802379726458061, guid: 7fe8e6e6384c220448a448c9ea4679af, type: 3}

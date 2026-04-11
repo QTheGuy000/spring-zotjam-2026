@@ -8,7 +8,13 @@ public class projectile : MonoBehaviour
     [SerializeField] float _min_movement_speed = 2;
     [SerializeField] float _seconds_of_homing_time;
     [SerializeField] bool _homing;
+    [SerializeField] bool _rotating;
+    [SerializeField] public bool clockwise = true;
+    [SerializeField] float _angles_per_second = 5;
     private bool isDeflected = false;
+    private float _angle;
+
+    public float starting_angle;
 
     [SerializeField] Rigidbody2D _rigidbody;
     private playerMovement _target;
@@ -18,20 +24,46 @@ public class projectile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _target = gameController.instance.player;
-        transform.right = _target.transform.position - transform.position;
-
         mainCamera = Camera.main;
+        _angle = starting_angle;
+        _target = gameController.instance.player;
+
+        if (_rotating == false)
+        {
+            transform.right = _target.transform.position - transform.position;
+        }
+        else
+        {
+            transform.right = new Vector3(Mathf.Cos(_angle * Mathf.Deg2Rad), Mathf.Sin(_angle * Mathf.Deg2Rad), 0);
+        }
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         _lifespan -= Time.deltaTime;
+        if (_rotating)
+        {
+            if (clockwise)
+            {
+                _angle += _angles_per_second * Time.deltaTime;
+
+            }
+            else
+            {
+                _angle -= _angles_per_second * Time.deltaTime;
+            }
+
+            _angle %= 360;
+        }
         if (_lifespan <= 0)
         {
             Destroy(gameObject);
         }
+
+        
 
         // Destroys if it goes out of screen.
         Vector3 screenPos = mainCamera.WorldToViewportPoint(transform.position);
@@ -39,7 +71,7 @@ public class projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+        
     }
 
     private void FixedUpdate()
@@ -56,6 +88,12 @@ public class projectile : MonoBehaviour
         {
             _seconds_of_homing_time -= Time.deltaTime;
             transform.right = _target.transform.position - transform.position;
+        }
+
+        else if (_rotating == true)
+        {
+            Debug.Log(_angle);
+            transform.eulerAngles = new Vector3(0, 0, _angle);
         }
 
     }
@@ -81,8 +119,10 @@ public class projectile : MonoBehaviour
         _rigidbody.linearVelocity = Vector2.zero;
         // Adds new velocity.
         _rigidbody.AddForce(newDirection * _movement_speed, ForceMode2D.Impulse);
+
+        _homing = false;
+        _rotating = false;
         isDeflected = true;
-        _homing = false;   
     }
 
     public bool checkIsDeflected()
