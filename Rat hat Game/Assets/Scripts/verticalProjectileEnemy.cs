@@ -7,7 +7,6 @@ public class verticalProjectileEnemy : enemy
     private float _projectile_timer;
     private float _base_x;
 
-    [SerializeField] float _max_distance_from_target = 4;
     [SerializeField] float _amplitude = 4;
     [SerializeField] float _frequency = 4;
 
@@ -21,7 +20,6 @@ public class verticalProjectileEnemy : enemy
     void Start()
     {
         _projectile_timer = _seconds_between_projectiles;
-        _seconds_between_force_capping = 1;
         _force_capping_timer = _seconds_between_force_capping;
         _base_x = transform.position.x;
     }

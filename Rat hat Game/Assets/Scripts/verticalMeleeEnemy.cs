@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class meleeEnemy : enemy
+public class verticalMeleeEnemy : enemy
 {
 
     [SerializeField] float _movement_curve_flatenning_factor;
@@ -13,7 +13,7 @@ public class meleeEnemy : enemy
     void Start()
     {
         _target = gameController.instance.player;
-        _seconds_between_force_capping = 3f; 
+        _seconds_between_force_capping = 3f;
     }
 
     // Update is called once per frame

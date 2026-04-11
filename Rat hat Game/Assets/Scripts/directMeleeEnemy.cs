@@ -1,19 +1,11 @@
 using UnityEngine;
 
-public class meleeEnemy : enemy
+public class directMeleeEnemy : enemy
 {
-
-    [SerializeField] float _movement_curve_flatenning_factor;
-
-    private float _minimum_height = 4.00f;
-    private float _curve_center_x;
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _target = gameController.instance.player;
-        _seconds_between_force_capping = 3f; 
     }
 
     // Update is called once per frame
@@ -41,7 +33,6 @@ public class meleeEnemy : enemy
         if (_movement_timer < 0)
         {
             _movement_timer = _seconds_between_movement_change;
-            _curve_center_x = _target.transform.position.x;
             if (transform.position.x < 0)
             {
                 _target_x = 10;
@@ -52,7 +43,8 @@ public class meleeEnemy : enemy
             }
         }
 
-        _target_y = (Mathf.Pow(transform.position.x - _curve_center_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
+        _target_y = _target.transform.position.y + Random.Range(0, 0.3f);
+
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
