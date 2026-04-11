@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class playerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] private int maxhealth = 3;
+    private int currentHealth;
     public float speed = 5.0f;
     public float bounceAmount;
     public float moveAmount;
+    [SerializeField] public List<Image> uiImageList;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentHealth = maxhealth;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,6 +29,11 @@ public class playerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Hat"))
         {
             rb.AddForce(Vector2.up * bounceAmount);
+        }
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            currentHealth--;
+
         }
     }
 }
