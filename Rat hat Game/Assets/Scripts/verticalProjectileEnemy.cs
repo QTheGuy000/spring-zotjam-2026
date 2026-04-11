@@ -4,12 +4,9 @@ using UnityEngine;
 public class verticalProjectileEnemy : enemy
 {
 
-    private float _distance_to_target;
     private float _projectile_timer;
     private float _base_x;
-    private float _velocity_height_fluctuation_bound = 1.2f;
 
-    [SerializeField] float _max_distance_from_target = 4;
     [SerializeField] float _amplitude = 4;
     [SerializeField] float _frequency = 4;
 
@@ -23,7 +20,6 @@ public class verticalProjectileEnemy : enemy
     void Start()
     {
         _projectile_timer = _seconds_between_projectiles;
-        _seconds_between_force_capping = 2 / _frequency;
         _force_capping_timer = _seconds_between_force_capping;
         _base_x = transform.position.x;
     }
@@ -33,7 +29,7 @@ public class verticalProjectileEnemy : enemy
     {
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
-        _seconds_between_force_capping -= Time.deltaTime;
+        _force_capping_timer -= Time.deltaTime;
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
@@ -48,7 +44,7 @@ public class verticalProjectileEnemy : enemy
     {
         _target = gameController.instance.player;
         _move();
-        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 
+        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by _movement_speed
         {
             _force_capping_timer = _seconds_between_force_capping;
             _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _movement_speed;
@@ -71,15 +67,18 @@ public class verticalProjectileEnemy : enemy
             _movement_timer = _seconds_between_movement_change;
 
                 if (transform.position.y > 0){ // if not too far from player, _target_y is the farthest edge of the map
-                    _target_y = -4;
+                    _target_y = _screen_lower_bound;
                 }
                 else
                 {
-                    _target_y = 4;
+                    _target_y = _screen_upper_bound;
                 }
         }
 
         _target_x = _base_x + Mathf.Sin(_time * _frequency) * _amplitude; // _target_x is updated every frame based on a sine wave and the current time 
+
+        _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
+        _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
 
         if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
@@ -90,6 +89,7 @@ public class verticalProjectileEnemy : enemy
             _vertical_movement_additive = -1 * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier; ;
         }
 
+
         if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
         {
             _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
@@ -99,7 +99,9 @@ public class verticalProjectileEnemy : enemy
             _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
         }
 
+        
         _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+
     }
 
 }
