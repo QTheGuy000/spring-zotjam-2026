@@ -32,6 +32,7 @@ public class playerMovement : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            uiImageList[currentHealth - 1].enabled = false;
             currentHealth--;
 
         }
