@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9075023115376287818}
   m_Layer: 0
   m_Name: Projectile Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 856290323
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7510279668340973109, guid: ac34220195976864e9f226398b6f4464, type: 3}
@@ -171,9 +171,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileEnemy
   _vertical_acceleration_multiplier: 1.5
   _horizontal_acceleration_multiplier: 1
+  _seconds_between_force_capping: 0
   _seconds_between_movement_change: 2
   _movement_speed: 3
   _rigidbody: {fileID: 3628431436922566676}
+  _health: 0
+  isDead: 0
   _max_distance_from_target: 4
   _amplitude: 4
   _frequency: 4

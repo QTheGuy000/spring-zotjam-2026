@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4449903085563762158}
   m_Layer: 0
   m_Name: Swooping Melee Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 856290323
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3664956777744524951, guid: ef6a3ffdda307f448ab00ea67355605d, type: 3}
@@ -135,9 +135,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::meleeEnemy
   _vertical_acceleration_multiplier: 30
   _horizontal_acceleration_multiplier: 8
+  _seconds_between_force_capping: 0
   _seconds_between_movement_change: 4
   _movement_speed: 8
   _rigidbody: {fileID: 5760454293600178158}
+  _health: 0
+  isDead: 0
   _movement_curve_flatenning_factor: 15
 --- !u!61 &4449903085563762158
 BoxCollider2D:

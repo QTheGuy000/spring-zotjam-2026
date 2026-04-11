@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6990270010753116541}
   m_Layer: 0
   m_Name: Cloud
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6c432a94d87e8428ae82fbcbf791ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  playerTimeLimit: 5
 --- !u!68 &7355855682488739647
 EdgeCollider2D:
   m_ObjectHideFlags: 0
