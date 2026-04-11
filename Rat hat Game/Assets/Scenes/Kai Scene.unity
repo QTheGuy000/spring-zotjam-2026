@@ -925,16 +925,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211900426346705461, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
+      propertyPath: _amplitude
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211900426346705461, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
       propertyPath: _movement_speed
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3211900426346705461, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
       propertyPath: _seconds_between_movement_change
-      value: 1
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211900426346705461, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
+      propertyPath: _vertical_acceleration_multiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3211900426346705461, guid: 3fce26104c8aa764ea94485602548bb7, type: 3}
       propertyPath: _horizontal_acceleration_multiplier
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
