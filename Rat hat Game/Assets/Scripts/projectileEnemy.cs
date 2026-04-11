@@ -7,8 +7,6 @@ public class ProjectileEnemy : enemy
     private float _distance_to_target;
     private float _projectile_timer;
     private float _base_y;
-    private float _seconds_between_force_capping;
-    private float _force_capping_timer;
     private float _velocity_height_fluctuation_bound = 1.2f;
 
     [SerializeField] float _max_distance_from_target = 4;
@@ -96,23 +94,23 @@ public class ProjectileEnemy : enemy
 
         if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
-            _vertical_movement_multiplier = 1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
+            _vertical_movement_additive = _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier; ;
         }
         else
         {
-            _vertical_movement_multiplier = -1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
+            _vertical_movement_additive = -1 * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier; ;
         }
 
         if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
         {
-            _horizontal_movement_multiplier = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+            _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
         }
         else
         {
-            _horizontal_movement_multiplier = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+            _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier; ;
         }
 
-        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier * _movement_speed, _vertical_movement_multiplier * _amplitude * _movement_speed)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
+        _rigidbody.AddForce(new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
 
 }

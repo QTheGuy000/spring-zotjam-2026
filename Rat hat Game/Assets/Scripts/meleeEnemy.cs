@@ -5,20 +5,22 @@ public class meleeEnemy : enemy
 
     [SerializeField] float _movement_curve_flatenning_factor;
 
-    private float _minimum_height = 3.25f;
+    private float _minimum_height = 4.00f;
+    private float _curve_center_x;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _target = gameController.instance.player;
-
+        _seconds_between_force_capping = 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
         _movement_timer -= Time.deltaTime;
+        _force_capping_timer -= Time.deltaTime;
     }
 
 
@@ -26,7 +28,11 @@ public class meleeEnemy : enemy
     {
         _target = gameController.instance.player;
         _move();
-
+        if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 
+        {
+            _force_capping_timer = _seconds_between_force_capping;
+            _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _movement_speed;
+        }
     }
 
     void _move()
@@ -34,33 +40,40 @@ public class meleeEnemy : enemy
         if (_movement_timer < 0)
         {
             _movement_timer = _seconds_between_movement_change;
-            _target_x = _target.transform.position.x;
+            _curve_center_x = _target.transform.position.x;
+            if (transform.position.x < 0)
+            {
+                _target_x = 10;
+            }
+            else
+            {
+                _target_x = -10;
+            }
         }
 
-        _target_y = (Mathf.Pow(transform.position.x - _target_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
+        _target_y = (Mathf.Pow(transform.position.x - _curve_center_x, 2) / _movement_curve_flatenning_factor) - _minimum_height;
 
         _distance_to_target_x = Mathf.Abs(_target_x - transform.position.x);
         _distance_to_target_y = Mathf.Abs(_target_y - transform.position.y);
 
         if (_target_y > transform.position.y) // movement multiplier is +/- if _target_y is above/below the current position 
         {
-            _vertical_movement_multiplier = 1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
+            _vertical_movement_additive = _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier;
         }
         else
         {
-            _vertical_movement_multiplier = -1.5f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y);
+            _vertical_movement_additive = -1f * _distance_to_target_y / (_distance_to_target_x + _distance_to_target_y) * _vertical_acceleration_multiplier;
         }
 
         if (_target_x > transform.position.x) // movement multiplier is +/- if _target_x is to the right/left of the current position 
         {
-            _horizontal_movement_multiplier = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+            _horizontal_movement_additive = _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
         }
         else
         {
-            _horizontal_movement_multiplier = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y);
+            _horizontal_movement_additive = -1 * _distance_to_target_x / (_distance_to_target_x + _distance_to_target_y) * _horizontal_acceleration_multiplier;
         }
 
-        _rigidbody.AddForce(new Vector2(_horizontal_movement_multiplier * _movement_speed, _vertical_movement_multiplier * _movement_speed)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
-
+        _rigidbody.linearVelocity = (new Vector2(_horizontal_movement_additive, _vertical_movement_additive)); // force added every frame. To prevent exponential speed increases, _force_capping_timer applies a normalization
     }
 }
