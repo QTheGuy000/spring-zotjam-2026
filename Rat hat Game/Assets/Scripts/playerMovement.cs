@@ -26,10 +26,8 @@ public class playerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if(collision.gameObject.CompareTag("Hat"))
         {
-            Debug.Log("bounce");
             rb.AddForce(Vector2.up * bounceAmount);
         }
     }
