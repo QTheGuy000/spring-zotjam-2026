@@ -62,7 +62,7 @@ public class projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player")){
+        if (collision.collider.CompareTag("Player") && !isDeflected){
             // Player takes damage.
             Destroy(gameObject);
         }
@@ -81,7 +81,12 @@ public class projectile : MonoBehaviour
         _rigidbody.linearVelocity = Vector2.zero;
         // Adds new velocity.
         _rigidbody.AddForce(newDirection * _movement_speed, ForceMode2D.Impulse);
-
+        isDeflected = true;
         _homing = false;   
     }
+
+    public bool checkIsDeflected()
+    {
+        return isDeflected;
+    }    
 }
