@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3685861964360950550}
   - component: {fileID: 8465270598709781511}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Homing Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,5 +174,5 @@ MonoBehaviour:
   _movement_speed: 4
   _min_movement_speed: 4
   _seconds_of_homing_time: 2
-  _homing: 0
+  _homing: 1
   _rigidbody: {fileID: 2862282824736847861}

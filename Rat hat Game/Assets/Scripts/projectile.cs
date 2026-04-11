@@ -6,6 +6,8 @@ public class projectile : MonoBehaviour
     [SerializeField] float _lifespan = 6;
     [SerializeField] float _movement_speed = 4;
     [SerializeField] float _min_movement_speed = 2;
+    [SerializeField] float _seconds_of_homing_time;
+    [SerializeField] bool _homing;
     private bool isDeflected = false;
 
     [SerializeField] Rigidbody2D _rigidbody;
@@ -33,7 +35,7 @@ public class projectile : MonoBehaviour
 
         // Destroys if it goes out of screen.
         Vector3 screenPos = mainCamera.WorldToViewportPoint(transform.position);
-        if (screenPos.x < 0 || screenPos.x > 1 || screenPos.y < 0 || screenPos.y > 1){
+        if (screenPos.x < 0 || screenPos.x > 1 || screenPos.y < 0 || screenPos.y > 1) {
             Destroy(gameObject);
         }
 
@@ -41,7 +43,7 @@ public class projectile : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    { 
         if (!isDeflected){
             _rigidbody.AddForce(transform.right * _movement_speed);
             if (_rigidbody.linearVelocity.magnitude < _min_movement_speed)
@@ -49,6 +51,13 @@ public class projectile : MonoBehaviour
                 _rigidbody.linearVelocity = _rigidbody.linearVelocity.normalized * _min_movement_speed;
             }
         }
+
+        if (_homing == true && _seconds_of_homing_time < 0)
+        {
+            _seconds_of_homing_time -= Time.deltaTime;
+            transform.right = _target.transform.position - transform.position;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -73,5 +82,6 @@ public class projectile : MonoBehaviour
         // Adds new velocity.
         _rigidbody.AddForce(newDirection * _movement_speed, ForceMode2D.Impulse);
 
+        _homing = false;   
     }
 }
