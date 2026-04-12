@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e5c9ca339ed31b84f8615289703f56c2
+guid: e4f5fdbd5241fe74fb943b7ef1fb1c14
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6646021498570883754
-    second: Muskrat II_0
+      213: 1731092881804337680
+    second: introcutscene_5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Muskrat II_0
+      name: introcutscene_5_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
-        width: 186
-        height: 186
+        x: 0
+        y: 0
+        width: 1275
+        height: 717
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa24def37596b3c50800000000000000
-      internalID: 6646021498570883754
+      spriteID: 012a725edc3160810800000000000000
+      internalID: 1731092881804337680
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Muskrat II_0: 6646021498570883754
+      introcutscene_5_0: 1731092881804337680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
