@@ -31,7 +31,12 @@ public class LevelManager : MonoBehaviour
         "I am the 16th President!",
         "I was the tallest President!",
         "I signed the Emancimation Proclamation!",
-        "My favorite meal is the Chicken Fricassee!"
+        "My favorite meal is the Chicken Fricassee!",
+        "I did not murder any individuals!",
+        "I have never lied!",
+        "I never died!",
+        "I'm immortal!",
+        "New quote: I play to win the game B)"
     };
 
     private void Awake()
