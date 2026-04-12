@@ -213,6 +213,7 @@ MonoBehaviour:
   knockbackForce: 1
   maxhealth: 5
   heartContainer: {fileID: 0}
+  lostHeart: {fileID: -902318259101778010, guid: 4dd9cdefb0f5f9b45b01b03de934f6cf, type: 3}
 --- !u!1001 &3952068061499231625
 PrefabInstance:
   m_ObjectHideFlags: 0

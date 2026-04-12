@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 {
     public bool levelComplete = false;
     public bool stageComplete = false;
-    public int currentStage = 0;
+    public int currentStage;
     public bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
@@ -40,8 +40,13 @@ public class LevelManager : MonoBehaviour
         "New quote: I play to win the game B)"
     };
 
+    public GameObject levelTransitionCloud;
+
     private void Awake()
     {
+        currentStage = Statistics.CurrentStage;
+
+        // Acts liek Static class
         if (instance == null)
         {
             instance = this;
@@ -51,6 +56,7 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Initializes UI
         Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
         Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
         Button restartButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
@@ -72,22 +78,25 @@ public class LevelManager : MonoBehaviour
         gameOverMenu.SetActive(false);
 
         lincolnDialogue.SetActive(false);
-
         countdownMenu.SetActive(false);
+        levelTransitionCloud.SetActive(false);
 
         // Disables all other stages
         for (int c = 1; c < transform.childCount; c++)
         {
             transform.GetChild(c).gameObject.SetActive(false);
         }
+
+        // Explicitly enable only the starting stage
+        transform.GetChild(currentStage).gameObject.SetActive(true);
+        Time.timeScale = 1; // Add this!
+        isPaused = false;   // Add this!
         isTransitioning = true;
-        StartStage(currentStage);
     }
 
     void Start()
     {
-        
-        
+        StartStage(currentStage);
     }
 
     void Update()
@@ -144,7 +153,7 @@ public class LevelManager : MonoBehaviour
         countdownMenu.SetActive(true);
         for (int i = enemyStartDelay; i > 0; i--){
             countdownMenu.GetComponent<TMP_Text>().text = i.ToString();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.4f);
         }
         countdownMenu.GetComponent<TMP_Text>().text = "GO";
         yield return new WaitForSeconds(1);
@@ -167,40 +176,58 @@ public class LevelManager : MonoBehaviour
         yield return StartCoroutine(LincolnSpeaks());
 
         currentStage++;
+        Statistics.CurrentStage = currentStage;
 
-        // Goes to Next Level if all stages completed
-        // Stage 3 (index 3) is the background transition, not a real stage
-        if (currentStage >= transform.childCount - 1)
-        {
-            // Slide to the background (child index 3)
+        if (currentStage >= transform.childCount - 1){
             GameObject oldStage = transform.GetChild(currentStage - 1).gameObject;
             GameObject backgroundStage = transform.GetChild(currentStage).gameObject;
-            backgroundStage.SetActive(true);
+
+            RectTransform cloudRect = levelTransitionCloud.GetComponent<RectTransform>();
+
+            // Start cloud above the screen
+            float screenHeight = Screen.height;
+            cloudRect.anchoredPosition = new Vector2(0, screenHeight);
+            levelTransitionCloud.SetActive(true);
 
             float elapsed = 0f;
             float duration = slideDistance / slideSpeed;
 
-            Vector3 oldStageStart = oldStage.transform.position;
-            Vector3 newStageStart = backgroundStage.transform.position;
-            Vector3 offset = Vector3.down * slideDistance;
-
+            // Slide cloud DOWN to cover screen
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
                 float smoothT = Mathf.SmoothStep(0f, 1f, t);
-
-                oldStage.transform.position = Vector3.Lerp(oldStageStart, oldStageStart + offset, smoothT);
-                backgroundStage.transform.position = Vector3.Lerp(newStageStart, newStageStart + offset, smoothT);
-
+                cloudRect.anchoredPosition = new Vector2(0, Mathf.Lerp(screenHeight, 0, smoothT));
                 yield return null;
             }
-            // Goes to next level
+
+            // Cloud fully covers screen — reposition and swap stages underneath
+            cloudRect.anchoredPosition = Vector2.zero;
             oldStage.SetActive(false);
+            backgroundStage.transform.position += Vector3.down * slideDistance; // Move it down!
+            backgroundStage.SetActive(true);
+
+            elapsed = 0f;
+
+            // Slide cloud DOWN off screen to reveal new stage
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                float smoothT = Mathf.SmoothStep(0f, 1f, t);
+                cloudRect.anchoredPosition = new Vector2(0, Mathf.Lerp(0, -screenHeight, smoothT));
+                yield return null;
+            }
+
+            levelTransitionCloud.SetActive(false);
+
             levelComplete = true;
+            Statistics.CurrentLevel += 1;
+            Statistics.CurrentStage = 0;
 
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("Level2Scene");
+            SceneManager.LoadScene("Level" + Statistics.CurrentLevel + "Scene");
             yield break;
         }
 
@@ -284,7 +311,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void GoToMenu(){
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("MenuScreen"));
+        SceneManager.LoadScene("MenuScreen");
     }
 
     // Closes the game
@@ -294,7 +321,8 @@ public class LevelManager : MonoBehaviour
     }
 
     public void RestartLevel(){
-        //um
+        Statistics.CurrentStage = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameOver(){

@@ -16,6 +16,7 @@ public class playerStats : MonoBehaviour
     private float _invincibility_time = 0;
     private float _max_invincibility_time = 0.25f;
     private float _enemy_collision_time = 0;
+    public Sprite lostHeart;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,7 +93,7 @@ public class playerStats : MonoBehaviour
         _invincibility_time = _max_invincibility_time;
         Camera.main.GetComponent<cameraController>().AddCameraShake(0.1f);
         if (currentHealth > 0){
-            heartImages[currentHealth - 1].enabled = false;
+            heartImages[currentHealth - 1].sprite = lostHeart;
             currentHealth--;
             StartCoroutine(TakeDamage());
         }
