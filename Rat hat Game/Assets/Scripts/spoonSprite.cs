@@ -5,7 +5,7 @@ public class spoonSprite : MonoBehaviour
 {
     private Transform player;
     private Transform spoon;
-    private Transform spriteHolder;
+    public Transform spriteHolder;
     private Camera mainCamera;
     private float radius;
     private bool parrying;
@@ -22,13 +22,13 @@ public class spoonSprite : MonoBehaviour
     {
         player = transform.parent.parent;
         spoon = transform.parent;
-        spriteHolder = transform.GetChild(1);
+        //spriteHolder = transform.GetChild(0);
         mainCamera = Camera.main;
         radius = Vector2.Distance(transform.localPosition, Vector2.zero);
         radius = 0.5795338f;
         parrying = false;
         float spoonRadius = spoon.GetComponent<Spoon>().radius;
-        spriteRenderer = spriteHolder.GetComponent<SpriteRenderer>();
+        spriteRenderer = spriteHolder.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,18 +54,24 @@ public class spoonSprite : MonoBehaviour
 
     public void LeftSwing()
     {
+        //Debug.Log("SwingStart");
         parrying = true;
-        StartCoroutine(SpinSpoon());
         spriteRenderer.sprite = leftSwing;
-        Debug.Log("Swing");
+        spriteRenderer.enabled = true;
+        StartCoroutine(SpinSpoon());
+        //Debug.Log("SwingEnd");
     }
 
     public void RightSwing()
     {
+        //Debug.Log("Holder " + spriteHolder);
+        //Debug.Log("Renderer " + spriteRenderer);
+        //Debug.Log("SwingStart");
         parrying = true;
-        StartCoroutine(SpinSpoon());
         spriteRenderer.sprite = rightSwing;
-        Debug.Log("Swing");
+        spriteRenderer.enabled = true;
+        StartCoroutine(SpinSpoon());
+        //Debug.Log("SwingEnd");
     }
 
     IEnumerator SpinSpoon()
@@ -74,7 +80,6 @@ public class spoonSprite : MonoBehaviour
         transform.position = spoon.position;
         float turnSpeed = 1000f;
         float rotated = 0;
-        Quaternion origRotation = transform.rotation;
         transform.RotateAround(player.position, Vector3.forward, turnSpeed * Time.deltaTime);
         while (rotated < 360f)
         {
@@ -86,5 +91,12 @@ public class spoonSprite : MonoBehaviour
         transform.rotation = new Quaternion(0, 0, 0, 0);
         transform.position = spoon.position;
         parrying = false;
+        hideSprite();
+    }
+
+    void hideSprite()
+    {
+        spriteRenderer.enabled = false;
+        spoon.GetComponent<Spoon>().returnSprite();
     }
 }

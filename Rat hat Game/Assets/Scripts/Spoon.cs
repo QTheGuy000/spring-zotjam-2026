@@ -60,6 +60,7 @@ public class Spoon: MonoBehaviour
             bool isLeftSwing = mouseWorldPos.x < player.position.x;
             StartCoroutine(SwingSpoon(isLeftSwing));
         }
+        //Debug.Log(isSwinging);
     }
 
     void RotateAroundPlayer()
@@ -81,8 +82,9 @@ public class Spoon: MonoBehaviour
         // Play swing animation based on direction
         if (isLeftSwing){
             Debug.Log("LSwing");
-            spriteRenderer.sprite = null;
+            spriteRenderer.enabled = false;
             sprite.GetComponent<spoonSprite>().LeftSwing();
+            Debug.Log("AFTER");
             /*spriteRenderer.sprite = leftSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
             spriteRenderer.sprite = leftSwing2;*/
@@ -90,8 +92,9 @@ public class Spoon: MonoBehaviour
         else{
 
             Debug.Log("LSwing");
-            spriteRenderer.sprite = null;
+            spriteRenderer.enabled = false;
             sprite.GetComponent<spoonSprite>().RightSwing();
+            Debug.Log("AFTER");
             /*spriteRenderer.sprite = rightSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
             spriteRenderer.sprite = rightSwing2;*/
@@ -128,7 +131,7 @@ public class Spoon: MonoBehaviour
 
         // Hold swing2 for remaining cooldown, then return to idle
         yield return new WaitForSeconds(swingCooldown - swingFrameDuration);
-        spriteRenderer.sprite = idle;
+        //spriteRenderer.sprite = idle;
 
         isSwinging = false;
     }
@@ -160,9 +163,11 @@ public class Spoon: MonoBehaviour
         return isSwinging;
     }
 
-    void returnSprite()
+    public void returnSprite()
     {
         spriteRenderer.sprite = idle;
+        Debug.Log("ReturnSprite");
+        spriteRenderer.enabled = true;
     }
     void playHit()
     {
