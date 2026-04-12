@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 83e8fdd62dde03940ba7d185471a5a0a
+guid: 09d775c49216164499a9dc8a1e5c0840
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8304951553492372439
-    second: red plane_0
+      213: -8968512274295021961
+    second: Upper Cloud_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: red plane_0
+      name: Upper Cloud_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 9
-        width: 95
-        height: 37
+        x: 2
+        y: 0
+        width: 92
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7dbcdb6bf6d114370800000000000000
-      internalID: 8304951553492372439
+      spriteID: 77e1aee8a91798380800000000000000
+      internalID: -8968512274295021961
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      red plane_0: 8304951553492372439
+      Upper Cloud_0: -8968512274295021961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

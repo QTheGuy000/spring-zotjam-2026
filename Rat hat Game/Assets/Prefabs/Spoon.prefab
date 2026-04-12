@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1857315319
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3411414237561161789, guid: 7354a78587426ef4db61f941d0b1ac17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spoon
   swingCooldown: 0.5
+  swingFrameDuration: 0.1
   idle: {fileID: -3411414237561161789, guid: 7354a78587426ef4db61f941d0b1ac17, type: 3}
   leftSwing1: {fileID: 2926744729451116462, guid: 83cd295acbdea4a4e98ec831839e5d32, type: 3}
   leftSwing2: {fileID: -7853648888125138007, guid: 83cd295acbdea4a4e98ec831839e5d32, type: 3}

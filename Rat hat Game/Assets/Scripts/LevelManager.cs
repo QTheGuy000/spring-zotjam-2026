@@ -8,9 +8,9 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-    public bool gameComplete = false;
     public bool levelComplete = false;
-    public int currentLevel = 0;
+    public bool stageComplete = false;
+    public int currentStage = 0;
     public bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
@@ -19,9 +19,9 @@ public class LevelManager : MonoBehaviour
 
     private enemy[] enemies;
 
-    public float slideSpeed = 5f;         // Speed of the level transition
-    public float slideDistance = 10.125f;     // How far the level slides down (match your level height)
-    public int enemyStartDelay = 3;     // Seconds before level starts
+    public float slideSpeed = 5f;         // Speed of the stage transition
+    public float slideDistance = 10f;     // How far the stage slides down (match your stage height)
+    public int enemyStartDelay = 3;     // Seconds before stage starts
 
     public bool isTransitioning = true;
 
@@ -53,18 +53,20 @@ public class LevelManager : MonoBehaviour
 
         Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
         Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
-        Button quitButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
+        Button restartButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
+        Button quitButton = pauseMenu.transform.GetChild(4).GetComponent<Button>();
 
         continueButton.onClick.AddListener(() => TogglePause());
         menuButton.onClick.AddListener(() => GoToMenu());
+        restartButton.onClick.AddListener(() => RestartLevel());
         quitButton.onClick.AddListener(() => QuitGame());
         pauseMenu.SetActive(false);
 
-        Button restartButton = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
+        Button restartButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
         Button menuButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
         Button quitButton2 = gameOverMenu.transform.GetChild(3).GetComponent<Button>();
 
-        restartButton.onClick.AddListener(() => RestartLevel());
+        restartButton2.onClick.AddListener(() => RestartLevel());
         menuButton2.onClick.AddListener(() => GoToMenu());
         quitButton2.onClick.AddListener(() => QuitGame());
         gameOverMenu.SetActive(false);
@@ -73,13 +75,13 @@ public class LevelManager : MonoBehaviour
 
         countdownMenu.SetActive(false);
 
-        // Disables all other levels
+        // Disables all other stages
         for (int c = 1; c < transform.childCount; c++)
         {
             transform.GetChild(c).gameObject.SetActive(false);
         }
         isTransitioning = true;
-        StartLevel(currentLevel);
+        StartStage(currentStage);
     }
 
     void Start()
@@ -94,43 +96,47 @@ public class LevelManager : MonoBehaviour
             TogglePause();
         }
 
-        if (gameComplete){
+        if (levelComplete){
             return;
         }
 
         // Lets transition do transition
         if (isTransitioning) return;
 
-        // Checks for level complete
-        if (!levelComplete)
+        // Checks for stage complete
+        if (!stageComplete)
         {
-            levelComplete = AllEnemiesDead();
+            stageComplete = AllEnemiesDead();
         }
 
-        // Moves to next level
-        if (levelComplete)
-        {
-            levelComplete = false;
-            StartCoroutine(NextLevel());
+        // Moves to next stage
+        if (stageComplete){
+            stageComplete = false;
+            // Destroys all projectiles
+            foreach (GameObject projectile in GameObject.FindGameObjectsWithTag("Projectile")){
+                Destroy(projectile);
+            }
+
+            StartCoroutine(NextStage());
         }
     }
 
-    void StartLevel(int levelNum){
-        GameObject level = transform.GetChild(levelNum).gameObject;
+    void StartStage(int stageNum){
+        GameObject stage = transform.GetChild(stageNum).gameObject;
 
-        PopulateEnemies(level);
+        PopulateEnemies(stage);
         StartCoroutine(ActivateEnemies());
     }
 
-    // Populates enemies list from the level's enemies child object
-    void PopulateEnemies(GameObject level)
+    // Populates enemies list from the stage's enemies child object
+    void PopulateEnemies(GameObject stage)
     {
-        // 1th child (index 1) of the level is the enemies container
-        Transform enemiesContainer = level.transform.GetChild(1);
+        // 1th child (index 1) of the stage is the enemies container
+        Transform enemiesContainer = stage.transform.GetChild(1);
         enemies = enemiesContainer.GetComponentsInChildren<enemy>(true);
     }
 
-    // Activates all enemies in the current level
+    // Activates all enemies in the current stage
     IEnumerator ActivateEnemies()
     {
         yield return new WaitForSeconds(1);
@@ -154,27 +160,28 @@ public class LevelManager : MonoBehaviour
         isTransitioning = false;
     }
 
-    IEnumerator NextLevel()
+    IEnumerator NextStage()
     {
         isTransitioning = true;
 
         yield return StartCoroutine(LincolnSpeaks());
 
-        currentLevel++;
+        currentStage++;
 
-        // Level 3 (index 3) is the background transition, not a real level
-        if (currentLevel >= transform.childCount - 1)
+        // Goes to Next Level if all stages completed
+        // Stage 3 (index 3) is the background transition, not a real stage
+        if (currentStage >= transform.childCount - 1)
         {
             // Slide to the background (child index 3)
-            GameObject oldLevel = transform.GetChild(currentLevel - 1).gameObject;
-            GameObject backgroundLevel = transform.GetChild(currentLevel).gameObject;
-            backgroundLevel.SetActive(true);
+            GameObject oldStage = transform.GetChild(currentStage - 1).gameObject;
+            GameObject backgroundStage = transform.GetChild(currentStage).gameObject;
+            backgroundStage.SetActive(true);
 
             float elapsed = 0f;
             float duration = slideDistance / slideSpeed;
 
-            Vector3 oldLevelStart = oldLevel.transform.position;
-            Vector3 newLevelStart = backgroundLevel.transform.position;
+            Vector3 oldStageStart = oldStage.transform.position;
+            Vector3 newStageStart = backgroundStage.transform.position;
             Vector3 offset = Vector3.down * slideDistance;
 
             while (elapsed < duration)
@@ -183,36 +190,37 @@ public class LevelManager : MonoBehaviour
                 float t = Mathf.Clamp01(elapsed / duration);
                 float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-                oldLevel.transform.position = Vector3.Lerp(oldLevelStart, oldLevelStart + offset, smoothT);
-                backgroundLevel.transform.position = Vector3.Lerp(newLevelStart, newLevelStart + offset, smoothT);
+                oldStage.transform.position = Vector3.Lerp(oldStageStart, oldStageStart + offset, smoothT);
+                backgroundStage.transform.position = Vector3.Lerp(newStageStart, newStageStart + offset, smoothT);
 
                 yield return null;
             }
-
-            oldLevel.SetActive(false);
-            gameComplete = true;
+            // Goes to next level
+            oldStage.SetActive(false);
+            levelComplete = true;
 
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("Stage2Scene");
+            SceneManager.LoadScene("Level2Scene");
             yield break;
         }
 
-        // Shift all remaining levels down instantly
-        for (int i = currentLevel + 1; i < transform.childCount; i++)
+        // Otherwise, goes to next stage.
+        // Shift all remaining stages down instantly
+        for (int i = currentStage + 1; i < transform.childCount; i++)
         {
-            Transform level = transform.GetChild(i);
-            level.position += Vector3.down * slideDistance;
+            Transform stage = transform.GetChild(i);
+            stage.position += Vector3.down * slideDistance;
         }
 
-        GameObject prevLevel = transform.GetChild(currentLevel - 1).gameObject;
-        GameObject newLevel = transform.GetChild(currentLevel).gameObject;
-        newLevel.SetActive(true);
+        GameObject prevStage = transform.GetChild(currentStage - 1).gameObject;
+        GameObject newStage = transform.GetChild(currentStage).gameObject;
+        newStage.SetActive(true);
 
         float elapsedNormal = 0f;
         float durationNormal = slideDistance / slideSpeed;
 
-        Vector3 prevStart = prevLevel.transform.position;
-        Vector3 nextStart = newLevel.transform.position;
+        Vector3 prevStart = prevStage.transform.position;
+        Vector3 nextStart = newStage.transform.position;
         Vector3 normalOffset = Vector3.down * slideDistance;
 
         while (elapsedNormal < durationNormal)
@@ -221,20 +229,20 @@ public class LevelManager : MonoBehaviour
             float t = Mathf.Clamp01(elapsedNormal / durationNormal);
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-            prevLevel.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
-            newLevel.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
+            prevStage.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
+            newStage.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
 
             yield return null;
         }
 
-        prevLevel.SetActive(false);
-        StartLevel(currentLevel);
+        prevStage.SetActive(false);
+        StartStage(currentStage);
     }
 
     IEnumerator LincolnSpeaks(){
         lincolnDialogue.SetActive(true);
 
-        string text = dialogues[currentLevel];
+        string text = dialogues[currentStage];
         GameObject textbox = lincolnDialogue.transform.GetChild(0).gameObject;
         TextAnimation textanim = textbox.GetComponent<TextAnimation>();
 
