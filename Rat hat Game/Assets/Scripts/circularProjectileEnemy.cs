@@ -50,6 +50,8 @@ public class circularProjectileEnemy : enemy
     // Update is called once per frame
     void Update()
     {
+        if (isd)
+
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
@@ -65,7 +67,6 @@ public class circularProjectileEnemy : enemy
             }
 
         }
-
 
 
         if (_projectile_timer <= 0) // when _projectile_timer hits 0, fires projectile

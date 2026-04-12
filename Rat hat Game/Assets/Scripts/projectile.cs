@@ -11,6 +11,7 @@ public class projectile : MonoBehaviour
     [SerializeField] bool _rotating;
     [SerializeField] public bool clockwise = true;
     [SerializeField] float _angles_per_second = 5;
+    [SerializeField] bool _initial_lock_on = true; // if true, locks on to player at start
     private bool isDeflected = false;
     private float _angle;
 
@@ -28,7 +29,7 @@ public class projectile : MonoBehaviour
         _angle = starting_angle;
         _target = gameController.instance.player;
 
-        if (_rotating == false)
+        if (_rotating == false && _initial_lock_on == true)
         {
             transform.right = _target.transform.position - transform.position;
         }

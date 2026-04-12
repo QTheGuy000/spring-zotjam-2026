@@ -17,7 +17,8 @@ public class gameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        player = playerObj.GetComponent<playerMovement>();
 
     }
 
@@ -25,8 +26,7 @@ public class gameController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        player = playerObj.GetComponent<playerMovement>();
+
     }
 
     // Update is called once per frame
