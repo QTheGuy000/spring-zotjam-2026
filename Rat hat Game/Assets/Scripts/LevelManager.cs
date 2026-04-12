@@ -37,10 +37,20 @@ public class LevelManager : MonoBehaviour
         "I have never lied!",
         "I never died!",
         "I'm immortal!",
-        "New quote: I play to win the game B)"
+        "New quote: I play to win the game B)",
+        "I had a pet turkey named Jack!",
+        "I invented a device to lift boats over shallow waters!",
+        "I was the first President to have a beard!",
+        "I was shot at before my assassination and survived!"
     };
 
     public GameObject levelTransitionCloud;
+
+    public GameObject moon;
+    private float moonScaleIncrement = 0.2f;  // How much the moon grows per stage
+    private float moonScaleDuration = 1f;     // How long the grow animation takes
+
+    public bool isMiniBoss = false;
 
     private void Awake()
     {
@@ -57,10 +67,10 @@ public class LevelManager : MonoBehaviour
         }
 
         // Initializes UI
-        Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
-        Button restartButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
-        Button quitButton = pauseMenu.transform.GetChild(4).GetComponent<Button>();
+        Button continueButton = pauseMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
+        Button restartButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
+        Button quitButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
 
         continueButton.onClick.AddListener(() => TogglePause());
         menuButton.onClick.AddListener(() => GoToMenu());
@@ -68,9 +78,9 @@ public class LevelManager : MonoBehaviour
         quitButton.onClick.AddListener(() => QuitGame());
         pauseMenu.SetActive(false);
 
-        Button restartButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
-        Button quitButton2 = gameOverMenu.transform.GetChild(3).GetComponent<Button>();
+        Button restartButton2 = gameOverMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
+        Button quitButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
 
         restartButton2.onClick.AddListener(() => RestartLevel());
         menuButton2.onClick.AddListener(() => GoToMenu());
@@ -92,6 +102,9 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1; // Add this!
         isPaused = false;   // Add this!
         isTransitioning = true;
+
+        // At the end of Awake, after other setup:
+        moon.transform.localScale = new Vector3(Statistics.MoonScale, Statistics.MoonScale, Statistics.MoonScale);
     }
 
     void Start()
@@ -177,6 +190,8 @@ public class LevelManager : MonoBehaviour
 
         currentStage++;
         Statistics.CurrentStage = currentStage;
+
+        StartCoroutine(GrowMoon()); // Grows during transition
 
         if (currentStage >= transform.childCount - 1){
             GameObject oldStage = transform.GetChild(currentStage - 1).gameObject;
@@ -269,7 +284,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator LincolnSpeaks(){
         lincolnDialogue.SetActive(true);
 
-        string text = dialogues[currentStage];
+        string text = dialogues[UnityEngine.Random.Range(0, dialogues.Count)];
         GameObject textbox = lincolnDialogue.transform.GetChild(0).gameObject;
         TextAnimation textanim = textbox.GetComponent<TextAnimation>();
 
@@ -280,6 +295,26 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         lincolnDialogue.SetActive(false);
+    }
+
+    IEnumerator GrowMoon()
+    {
+        float elapsed = 0f;
+        Vector3 startScale = moon.transform.localScale;
+        float targetScaleValue = Statistics.MoonScale + moonScaleIncrement;
+        Vector3 targetScale = new Vector3(targetScaleValue, targetScaleValue, targetScaleValue);
+
+        while (elapsed < moonScaleDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / moonScaleDuration);
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+            moon.transform.localScale = Vector3.Lerp(startScale, targetScale, smoothT);
+            yield return null;
+        }
+
+        moon.transform.localScale = targetScale;
+        Statistics.MoonScale = targetScaleValue; // Save to Statistics
     }
 
     bool AllEnemiesDead()

@@ -10,4 +10,7 @@ public static class Statistics
     public static int CurrentStage {get; set;} = 0;
 
     public static int Levels {get; set;} = 6;
+
+    public static float MoonScale = 1f;      // Persists across levels
+
 }
