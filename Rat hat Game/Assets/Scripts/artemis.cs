@@ -11,6 +11,20 @@ public class artemis : enemy
     // Update is called once per frame
     void Update()
     {
-        
+        if (isActive == false || isDead == true)
+        {
+            return;
+        }
+
     }
+
+    private void FixedUpdate()
+    {
+        if (isActive == false || isDead == true)
+        {
+            return;
+        }
+
+    }
+
 }

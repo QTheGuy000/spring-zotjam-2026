@@ -93,7 +93,6 @@ public class projectile : MonoBehaviour
 
         else if (_rotating == true)
         {
-            Debug.Log(_angle);
             transform.eulerAngles = new Vector3(0, 0, _angle);
         }
 
