@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using System;
 
 // Recreation of the TeleType script
 public class TextAnimation : MonoBehaviour
@@ -9,20 +11,22 @@ public class TextAnimation : MonoBehaviour
     // The Text Component
     private TMP_Text textbox;
     // List of all the dialogues it will iterate through
-    public string[] dialogues;
+    public List<string> dialogues = new(){};
 
     // Speed of revealing text
     [SerializeField] private float timeBtwnChars = 0.05f;
     [SerializeField] private float timeBtwnWords = 0.05f;
     
-
-    void Start(){
+    void Awake(){
         textbox = GetComponent<TMP_Text>();
+    }
+    void Start(){
+        
     }
 
     // Reveals the text over time
     public IEnumerator RevealText(){
-        foreach (string dialogue in dialogues){
+        foreach (string dialogue in dialogues.ToList()){
             textbox.text = dialogue;
             // Ensures that the text doesn't shift due to line-wrapping
             textbox.ForceMeshUpdate();
@@ -43,6 +47,10 @@ public class TextAnimation : MonoBehaviour
             }
         }
         // Reaching here means all dialogues have been finished
+    }
+
+    public void AddDialogue(string dialogue){
+        dialogues.Add(dialogue);
     }
 
 }

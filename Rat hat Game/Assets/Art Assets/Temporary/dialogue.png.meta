@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 83cd295acbdea4a4e98ec831839e5d32
+guid: ea53c3fef3721e943b2c93254118a4bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6879455484680005285
-    second: spoon_parry_left_0
-  - first:
-      213: 2926744729451116462
-    second: spoon_parry_left_1
-  - first:
-      213: -7853648888125138007
-    second: spoon_parry_left_2
+      213: 791336545582589345
+    second: dialogue_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spoon_parry_left_0
+      name: dialogue_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 26
-        width: 15
-        height: 38
+        x: 0
+        y: 0
+        width: 2018
+        height: 951
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5919838fa34780a0800000000000000
-      internalID: -6879455484680005285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spoon_parry_left_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 4
-        width: 53
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ea73e2b23d2ed9820800000000000000
-      internalID: 2926744729451116462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spoon_parry_left_2
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 2
-        width: 52
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9abd8a852fb320390800000000000000
-      internalID: -7853648888125138007
+      spriteID: 1a52c3145646bfa00800000000000000
+      internalID: 791336545582589345
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spoon_parry_left_0: -6879455484680005285
-      spoon_parry_left_1: 2926744729451116462
-      spoon_parry_left_2: -7853648888125138007
+      dialogue_0: 791336545582589345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
