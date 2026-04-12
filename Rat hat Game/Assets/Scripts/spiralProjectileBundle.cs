@@ -25,7 +25,10 @@ public class spiralProjectileBundle : MonoBehaviour
                 float _spawn_y = transform.position.y + _distance_from_center * Mathf.Sin(angle * Mathf.Deg2Rad);
                 _projectile.transform.GetComponent<projectile>().starting_angle = angle;
                 _projectile.transform.GetComponent<projectile>().clockwise = _clockwise;
-                _projectile.gameObject.layer = LayerMask.NameToLayer("Artemis Projectile");
+                if (_fired_by_artemis == true)
+                {
+                    _projectile.gameObject.layer = LayerMask.NameToLayer("Artemis Projectile");
+                }
                 _instantiated_projectile = Instantiate(_projectile, new Vector3(_spawn_x, _spawn_y, 0), Quaternion.identity);
 
             }
@@ -45,6 +48,10 @@ public class spiralProjectileBundle : MonoBehaviour
             float _spawn_y = transform.position.y + _distance_from_center * Mathf.Sin(angle * Mathf.Deg2Rad);
             _projectile.transform.GetComponent<projectile>().starting_angle = angle;
             _projectile.transform.GetComponent<projectile>().clockwise = _clockwise;
+            if (_fired_by_artemis == true)
+            {
+                _projectile.gameObject.layer = LayerMask.NameToLayer("Artemis Projectile");
+            }
             _instantiated_projectile = Instantiate(_projectile, new Vector3(_spawn_x, _spawn_y, 0), Quaternion.identity);
             _summoned_projectile_count += 1;
 

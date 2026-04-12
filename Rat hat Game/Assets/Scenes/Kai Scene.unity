@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 172965899}
   - component: {fileID: 172965898}
   - component: {fileID: 172965897}
+  - component: {fileID: 172965900}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -381,6 +382,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &172965900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172965896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae84592af4cc9e64993e655ea8ab3d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cameraController
 --- !u!1 &892715857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,67 +1099,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511445079}
   m_CullTransparentMesh: 1
---- !u!1001 &1519252755
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.26224518
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.7693853
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611585964122131259, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5213989696306572161, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: isActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593917732205555454, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
-      propertyPath: m_Name
-      value: Artmeis II
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
 --- !u!1 &1727168926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1277,10 @@ PrefabInstance:
       propertyPath: heartContainer
       value: 
       objectReference: {fileID: 892715857}
+    - target: {fileID: -5373834259342284683, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
+      propertyPath: knockbackForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6032081049482394183, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038087368
@@ -1989,5 +1945,4 @@ SceneRoots:
   - {fileID: 1727168930}
   - {fileID: 892715858}
   - {fileID: 1925275457}
-  - {fileID: 1519252755}
   - {fileID: 1291312378}
