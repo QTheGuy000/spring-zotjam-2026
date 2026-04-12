@@ -13,6 +13,7 @@ public class meleeEnemy : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
         _minimum_height = _screen_upper_bound - 1;
         _target = gameController.instance.player;
         _seconds_between_force_capping = 3f; 

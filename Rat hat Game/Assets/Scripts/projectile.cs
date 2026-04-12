@@ -22,6 +22,8 @@ public class projectile : MonoBehaviour
 
     private Camera mainCamera;
 
+    private float deflectionSpeed = 10f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -93,7 +95,10 @@ public class projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && !isDeflected){
+        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy")){
+            Destroy(gameObject);
+        }
+        if (collision.collider.CompareTag("Platform") || collision.collider.CompareTag("Hat")){
             Destroy(gameObject);
         }
         
@@ -105,7 +110,7 @@ public class projectile : MonoBehaviour
         // Stops current velocity.
         _rigidbody.linearVelocity = Vector2.zero;
         // Adds new velocity.
-        _rigidbody.AddForce(newDirection * _movement_speed, ForceMode2D.Impulse);
+        _rigidbody.AddForce(newDirection * deflectionSpeed, ForceMode2D.Impulse);
 
         _homing = false;
         _rotating = false;
@@ -114,8 +119,7 @@ public class projectile : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.limeGreen;
     }
 
-    public bool checkIsDeflected()
-    {
+    public bool checkIsDeflected(){
         return isDeflected;
     }    
 }

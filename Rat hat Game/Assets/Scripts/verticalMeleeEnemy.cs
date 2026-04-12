@@ -20,6 +20,7 @@ public class verticalMeleeEnemy : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
         _target = gameController.instance.player;
         _seconds_between_force_capping = 3f;
     }

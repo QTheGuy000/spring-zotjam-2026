@@ -45,10 +45,16 @@ public class enemy : MonoBehaviour
     }
 
 
-    public void ReceiveDamage(int damage_amount)
+    public void DecreaseHealth(int damage_amount = 1)
     {
-        _health -= damage_amount;
-        CheckHealth();
+        if (_health > 0){
+            _health -= damage_amount;
+            StartCoroutine(TakeDamage());
+        }
+
+        if (_health <= 0){
+            Die();
+        }
     }
 
     public virtual IEnumerator TakeDamage(){
@@ -60,6 +66,25 @@ public class enemy : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 0.4f);
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Projectile causes damage
+        if (collision.gameObject.CompareTag("Projectile")){
+            projectile pr = collision.gameObject.GetComponent<projectile>();
+            if (pr.checkIsDeflected()){
+                DecreaseHealth();
+            }
+
+        }
+    }
+
+    void Die(){
+        isDead = true;
+        isActive = false;
+        gameObject.SetActive(false);
+        // Explosion
     }
 
 }

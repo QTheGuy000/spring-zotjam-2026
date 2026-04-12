@@ -11,6 +11,7 @@ public class vanguardMeleeEnemy : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
     }
 
     // Update is called once per frame

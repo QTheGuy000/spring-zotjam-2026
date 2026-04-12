@@ -6,6 +6,7 @@ public class directMeleeEnemy : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
         _target = gameController.instance.player;
     }
 

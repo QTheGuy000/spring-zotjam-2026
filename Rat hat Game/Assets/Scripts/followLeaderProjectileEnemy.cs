@@ -20,6 +20,7 @@ public class followleaderProjectileEnemy : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
 

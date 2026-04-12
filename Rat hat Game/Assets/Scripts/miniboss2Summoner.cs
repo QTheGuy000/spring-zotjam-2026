@@ -29,6 +29,7 @@ public class miniboss2Summoner : enemy
     void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
+        base.Start();
         _summon_timer = _seconds_between_summon;
         _force_capping_timer = _seconds_between_force_capping;
 
