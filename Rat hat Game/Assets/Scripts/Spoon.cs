@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spoon: MonoBehaviour
 {
-    private float radius;
+    public float radius;
     private Camera mainCamera;
 
     private Collider2D spoonCollider;
@@ -24,6 +24,7 @@ public class Spoon: MonoBehaviour
     public Sprite leftSwing2;
     public Sprite rightSwing1;
     public Sprite rightSwing2;
+    private GameObject sprite;
 
     [SerializeField] AudioClip[] _list_of_hits;
     [SerializeField] AudioClip[] _list_of_misses;
@@ -37,6 +38,7 @@ public class Spoon: MonoBehaviour
         mainCamera = Camera.main;
         spoonCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sprite = transform.GetChild(0).gameObject;
         player = transform.parent;
 
         radius = Vector2.Distance(transform.localPosition, Vector2.zero);
@@ -78,14 +80,21 @@ public class Spoon: MonoBehaviour
 
         // Play swing animation based on direction
         if (isLeftSwing){
-            spriteRenderer.sprite = leftSwing1;
+            Debug.Log("LSwing");
+            spriteRenderer.sprite = null;
+            sprite.GetComponent<spoonSprite>().LeftSwing();
+            /*spriteRenderer.sprite = leftSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
-            spriteRenderer.sprite = leftSwing2;
+            spriteRenderer.sprite = leftSwing2;*/
         }
         else{
-            spriteRenderer.sprite = rightSwing1;
+
+            Debug.Log("LSwing");
+            spriteRenderer.sprite = null;
+            sprite.GetComponent<spoonSprite>().RightSwing();
+            /*spriteRenderer.sprite = rightSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
-            spriteRenderer.sprite = rightSwing2;
+            spriteRenderer.sprite = rightSwing2;*/
         }
 
         // Hit detection at peak of swing
@@ -151,6 +160,10 @@ public class Spoon: MonoBehaviour
         return isSwinging;
     }
 
+    void returnSprite()
+    {
+        spriteRenderer.sprite = idle;
+    }
     void playHit()
     {
         _hit_source.clip = _list_of_hits[Random.Range(0, _list_of_hits.Count())];
