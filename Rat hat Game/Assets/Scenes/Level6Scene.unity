@@ -4033,6 +4033,8 @@ MonoBehaviour:
   isTransitioning: 0
   lincolnDialogue: {fileID: 1190761993}
   levelTransitionCloud: {fileID: 977806278}
+  moon: {fileID: 0}
+  isMiniBoss: 0
 --- !u!4 &1524977322
 Transform:
   m_ObjectHideFlags: 0
@@ -5195,7 +5197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2050954292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5209,6 +5211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _sprite: {fileID: 2050954293}
+  _sprite1: {fileID: 1382046772377360943, guid: 04097b336d2216b4382b7f05a99d8a2c, type: 3}
+  _sprite2: {fileID: -6690206148019444834, guid: 55895c768ce82e74394f2edff7cdae78, type: 3}
   _artemis: {fileID: 948796358}
 --- !u!212 &2050954293
 SpriteRenderer:
