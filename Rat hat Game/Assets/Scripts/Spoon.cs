@@ -16,7 +16,7 @@ public class Spoon: MonoBehaviour
     private bool isSwinging = false;
     public float swingCooldown = 0.5f;
 
-    private bool touchingHat = false;
+    private bool touchingBouncer = false;
 
     void Start()
     {
@@ -68,11 +68,11 @@ public class Spoon: MonoBehaviour
             Debug.Log("Deflect!");
         }
         // Bounce off hat.
-        if (touchingHat){
+        if (touchingBouncer){
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             player.GetComponent<Rigidbody2D>().AddForce(-spoonDirection * 500);
             Debug.Log("Bounce!");
-            touchingHat = false;
+            touchingBouncer = false;
         }
         // Waits before letting next swing. 
         yield return new WaitForSeconds(swingCooldown);
@@ -86,8 +86,8 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Projectile")){
             touchingProjectile = other.GetComponent<projectile>();
         }
-        if (other.CompareTag("Hat")){
-            touchingHat = true;
+        if (other.CompareTag("Hat") || other.CompareTag("Platform") || other.CompareTag("Enemy")){
+            touchingBouncer = true;
         }
     }
 
@@ -96,8 +96,8 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Projectile")){
             touchingProjectile = null;
         }
-        if (other.CompareTag("Hat")){
-            touchingHat = false;
+        if (other.CompareTag("Hat") && other.CompareTag("Platform") && other.CompareTag("Enemy")){
+            touchingBouncer = false;
         }
     }
 

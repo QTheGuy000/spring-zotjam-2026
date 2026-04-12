@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public int currentLevel = 0;
     public bool isPaused = false;
     public GameObject pauseMenu;
+    public GameObject gameOverMenu;
 
     private enemy[] enemies;
 
@@ -109,10 +110,9 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(enemyStartDelay);
 
-        foreach (enemy e in enemies)
-        {
+        foreach (enemy e in enemies){
             if (e != null){
-                //e.isActive = true; // NOT IMPLEMENTED YET
+                e.isActive = true;
             }
         }
     }

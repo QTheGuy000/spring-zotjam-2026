@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class enemy : MonoBehaviour
 {
@@ -24,11 +25,13 @@ public class enemy : MonoBehaviour
     [SerializeField] protected float _seconds_between_movement_change = 2;
     [SerializeField] protected float _movement_speed = 3f;
     [SerializeField] protected Rigidbody2D _rigidbody;
-    [SerializeField] protected int _health;
-    public bool isDead = false;
     public float chaos_factor = 0;
 
-
+    // Main Stats
+    [SerializeField] protected int _health = 2;
+    public bool isDead = false;
+    public bool isActive = false;
+    
     void _checkHealth()
     {
         if (_health < 0)

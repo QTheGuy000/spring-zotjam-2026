@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 6032081049482394183}
   - component: {fileID: 1652108409167722822}
   - component: {fileID: 3150621513449801696}
-  - component: {fileID: 2256303221384044533}
   - component: {fileID: 3602371400499392107}
+  - component: {fileID: 2256303221384044533}
+  - component: {fileID: 8452387728316757888}
+  - component: {fileID: -5373834259342284683}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.14, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3577544408933884925}
@@ -85,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 553153473439620967, guid: 232464243a628a846a042b61d4c9c0f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,24 +124,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2256303221384044533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6414178282513333582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8bfdb5b4b6eebf448301b87c3ef401f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  maxhealth: 3
-  speed: 5
-  bounceAmount: 500
-  moveAmount: 5
-  knockbackForce: 0
-  uiImageList: []
 --- !u!70 &3602371400499392107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -177,6 +161,57 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &2256303221384044533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414178282513333582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bfdb5b4b6eebf448301b87c3ef401f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  speed: 5
+  bounceAmount: 500
+  moveAmount: 5
+  dashAmount: 0
+  jumpVelocity: 10
+  doubleJumpVelocity: 5
+  knockbackForce: 0
+  isGrounded: 1
+--- !u!114 &8452387728316757888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414178282513333582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba89d88faf1e1aa4e96a3eca0f09dc63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  idle: {fileID: 553153473439620967, guid: 232464243a628a846a042b61d4c9c0f8, type: 3}
+  aerial: {fileID: 7140337484133194768, guid: 363c3e27cc295084d8fe138cc41a92d3, type: 3}
+  parryR: {fileID: 524401227089141354, guid: 3fc39c568fcae1a4fae8761a34ea0af6, type: 3}
+  parryL: {fileID: -6099276404749136787, guid: 97ff58fca94f54e40aa5b867fde9dcf6, type: 3}
+--- !u!114 &-5373834259342284683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414178282513333582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2291aac5e8bc2b4fbb29180a3b93721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerStats
+  knockbackForce: 0
+  maxhealth: 3
+  heartContainer: {fileID: 0}
 --- !u!1001 &3952068061499231625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,6 +265,10 @@ PrefabInstance:
       value: Spoon
       objectReference: {fileID: 0}
     - target: {fileID: 7556740406619788800, guid: 263b3a2202c8ef249bfbdb92e830bb7c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3411414237561161789, guid: 7354a78587426ef4db61f941d0b1ac17, type: 3}
+    - target: {fileID: 7556740406619788800, guid: 263b3a2202c8ef249bfbdb92e830bb7c, type: 3}
       propertyPath: m_SortingLayer
       value: 4
       objectReference: {fileID: 0}
@@ -240,6 +279,14 @@ PrefabInstance:
     - target: {fileID: 7556740406619788800, guid: 263b3a2202c8ef249bfbdb92e830bb7c, type: 3}
       propertyPath: m_SortingLayerID
       value: -1857315319
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644121288655046571, guid: 263b3a2202c8ef249bfbdb92e830bb7c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644121288655046571, guid: 263b3a2202c8ef249bfbdb92e830bb7c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

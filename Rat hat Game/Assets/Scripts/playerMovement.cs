@@ -73,7 +73,7 @@ public class playerMovement : MonoBehaviour
         if(0 > Camera.main.WorldToViewportPoint(transform.position).y && !fell)
         {
             fell = true;
-            pStats.decreaseHealth();
+            pStats.DecreaseHealth();
             StartCoroutine(BounceBackCoroutine());
 
         }
