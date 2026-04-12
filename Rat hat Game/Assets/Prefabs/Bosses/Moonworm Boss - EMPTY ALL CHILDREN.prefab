@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 3664109896043906447}
   m_Layer: 0
   m_Name: Moonworm Boss - EMPTY ALL CHILDREN
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
