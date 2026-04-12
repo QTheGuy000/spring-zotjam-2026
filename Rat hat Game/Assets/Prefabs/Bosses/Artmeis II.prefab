@@ -162,6 +162,7 @@ MonoBehaviour:
   - Normal2
   _seconds_between_attack: 1.5
   _sprite: {fileID: 5275223028002075043}
+  _muskrat_add: {fileID: 3282767044159145485, guid: 4e1e4490d85d8e949a99b2d2480ed7c2, type: 3}
 --- !u!70 &4785527636625795486
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
