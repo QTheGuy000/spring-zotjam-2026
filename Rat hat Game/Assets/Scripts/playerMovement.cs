@@ -48,7 +48,7 @@ public class playerMovement : MonoBehaviour
         {
             dashVelocity = new Vector2(0, 0);
         }
-        Debug.Log(rb.linearVelocityX);
+        // Debug.Log(rb.linearVelocityX);
         if (moveVelocity.x != 0)
         {
             rb.linearVelocity = moveVelocity + dashVelocity;

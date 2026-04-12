@@ -139,8 +139,9 @@ MonoBehaviour:
   _seconds_between_movement_change: 4
   _movement_speed: 8
   _rigidbody: {fileID: 5760454293600178158}
-  _health: 0
+  _health: 2
   isDead: 0
+  chaos_factor: 0
   _movement_curve_flatenning_factor: 15
 --- !u!61 &4449903085563762158
 BoxCollider2D:

@@ -175,11 +175,13 @@ MonoBehaviour:
   _seconds_between_movement_change: -999
   _movement_speed: 2
   _rigidbody: {fileID: 5565407917386154952}
-  _health: 0
+  _health: 1
   isDead: 0
+  chaos_factor: 0
   _radius: 2
   _angles_per_second: 5
   _clockwise: 0
+  random_circle_center: 1
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 2
   _projectile_spawn_multiplier: 1.2

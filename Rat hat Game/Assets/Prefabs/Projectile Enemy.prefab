@@ -175,8 +175,9 @@ MonoBehaviour:
   _seconds_between_movement_change: 2
   _movement_speed: 3
   _rigidbody: {fileID: 3628431436922566676}
-  _health: 0
+  _health: 1
   isDead: 0
+  chaos_factor: 0
   _max_distance_from_target: 4
   _amplitude: 4
   _frequency: 4
