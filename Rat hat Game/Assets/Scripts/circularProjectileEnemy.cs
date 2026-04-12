@@ -21,6 +21,7 @@ public class circularProjectileEnemy : enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        base.Start();
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
         if (random_circle_center == true)

@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     public bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public GameObject countdownMenu;
 
     private enemy[] enemies;
 
@@ -63,6 +64,8 @@ public class LevelManager : MonoBehaviour
         gameOverMenu.SetActive(false);
 
         lincolnDialogue.SetActive(false);
+
+        countdownMenu.SetActive(false);
 
         // Disables all other levels
         for (int c = 1; c < transform.childCount; c++)

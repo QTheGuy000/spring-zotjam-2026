@@ -51,8 +51,14 @@ public class enemy : MonoBehaviour
 
     public void DecreaseHealth(int damage_amount = 1)
     {
-        _health -= damage_amount;
-        CheckHealth();
+        if (_health > 0){
+            _health -= damage_amount;
+            StartCoroutine(TakeDamage());
+        }
+
+        if (_health <= 0){
+            Die();
+        }
     }
 
     public virtual IEnumerator TakeDamage(){
@@ -71,11 +77,18 @@ public class enemy : MonoBehaviour
         // Projectile causes damage
         if (collision.gameObject.CompareTag("Projectile")){
             projectile pr = collision.gameObject.GetComponent<projectile>();
-            if (!pr.checkIsDeflected()){
+            if (pr.checkIsDeflected()){
                 DecreaseHealth();
             }
 
         }
+    }
+
+    void Die(){
+        isDead = true;
+        isActive = false;
+        gameObject.SetActive(false);
+        // Explosion
     }
 
 }

@@ -12,6 +12,7 @@ public class meleeEnemy : enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        base.Start();
         _minimum_height = _screen_upper_bound - 1;
         _target = gameController.instance.player;
         _seconds_between_force_capping = 3f; 
