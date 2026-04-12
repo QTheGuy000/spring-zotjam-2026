@@ -23,6 +23,11 @@ public class playerSprites : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.instance.isTransitioning){
+            sr.sprite = idle;
+            return;
+        }
+
         if(sr.sprite != currentSprite)
         {
             sr.sprite = currentSprite;

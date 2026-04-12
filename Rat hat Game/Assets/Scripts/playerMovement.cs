@@ -33,6 +33,23 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.instance.isTransitioning){
+            Vector2 origin = LevelManager.instance.origin.position;
+            float distanceToOrigin = Vector2.Distance(transform.position, origin);
+
+            if (distanceToOrigin > 0.1f){
+                // Move towards origin
+                Vector2 direction = (origin - (Vector2)transform.position).normalized;
+                rb.linearVelocity = direction * speed;
+            }
+            else{
+                // Stop at origin
+                rb.linearVelocity = Vector2.zero;
+                transform.position = origin; // Snap exactly to origin
+            }
+            return;
+        }
+
         moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY);
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Input.GetAxisRaw("Horizontal") != 0 && dashReady)
         {

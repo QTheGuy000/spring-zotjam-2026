@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerStats
   knockbackForce: 0
-  maxhealth: 3
+  maxhealth: 5
   heartContainer: {fileID: 0}
 --- !u!1001 &3952068061499231625
 PrefabInstance:

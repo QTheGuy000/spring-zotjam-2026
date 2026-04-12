@@ -19,6 +19,7 @@ public class CloudSpawner : MonoBehaviour
             Cloud cloud = Instantiate(cloudPrefab, transform.position, Quaternion.identity);
             cloud.SetDirection(cloudDirection, cloudSpeed, cloudLifetime);
             timer = 0f;
+            cloud.transform.SetParent(transform);
         }
     }
 }

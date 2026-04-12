@@ -15,14 +15,15 @@ public class LevelManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public GameObject countdownMenu;
+    public Transform origin;
 
     private enemy[] enemies;
 
     public float slideSpeed = 5f;         // Speed of the level transition
-    public float slideDistance = 10f;     // How far the level slides down (match your level height)
+    public float slideDistance = 10.125f;     // How far the level slides down (match your level height)
     public int enemyStartDelay = 3;     // Seconds before level starts
 
-    private bool isTransitioning = false;
+    public bool isTransitioning = true;
 
     public static LevelManager instance;
 
@@ -77,7 +78,7 @@ public class LevelManager : MonoBehaviour
         {
             transform.GetChild(c).gameObject.SetActive(false);
         }
-
+        isTransitioning = true;
         StartLevel(currentLevel);
     }
 
@@ -149,50 +150,85 @@ public class LevelManager : MonoBehaviour
                 e.isActive = true;
             }
         }
+
+        isTransitioning = false;
     }
 
     IEnumerator NextLevel()
     {
-        isTransitioning = true; // Move this to the very top!
+        isTransitioning = true;
 
         yield return StartCoroutine(LincolnSpeaks());
 
         currentLevel++;
 
-        if (currentLevel >= transform.childCount)
+        // Level 3 (index 3) is the background transition, not a real level
+        if (currentLevel >= transform.childCount - 1)
         {
-            Debug.Log("No more levels!");
+            // Slide to the background (child index 3)
+            GameObject oldLevel = transform.GetChild(currentLevel - 1).gameObject;
+            GameObject backgroundLevel = transform.GetChild(currentLevel).gameObject;
+            backgroundLevel.SetActive(true);
+
+            float elapsed = 0f;
+            float duration = slideDistance / slideSpeed;
+
+            Vector3 oldLevelStart = oldLevel.transform.position;
+            Vector3 newLevelStart = backgroundLevel.transform.position;
+            Vector3 offset = Vector3.down * slideDistance;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+                oldLevel.transform.position = Vector3.Lerp(oldLevelStart, oldLevelStart + offset, smoothT);
+                backgroundLevel.transform.position = Vector3.Lerp(newLevelStart, newLevelStart + offset, smoothT);
+
+                yield return null;
+            }
+
+            oldLevel.SetActive(false);
             gameComplete = true;
-            isTransitioning = false;
+
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("Stage2Scene");
             yield break;
         }
 
-        GameObject oldLevel = transform.GetChild(currentLevel - 1).gameObject;
+        // Shift all remaining levels down instantly
+        for (int i = currentLevel + 1; i < transform.childCount; i++)
+        {
+            Transform level = transform.GetChild(i);
+            level.position += Vector3.down * slideDistance;
+        }
+
+        GameObject prevLevel = transform.GetChild(currentLevel - 1).gameObject;
         GameObject newLevel = transform.GetChild(currentLevel).gameObject;
         newLevel.SetActive(true);
 
-        float elapsed = 0f;
-        float duration = slideDistance / slideSpeed;
+        float elapsedNormal = 0f;
+        float durationNormal = slideDistance / slideSpeed;
 
-        Vector3 oldLevelStart = oldLevel.transform.position;
-        Vector3 newLevelStart = newLevel.transform.position;
-        Vector3 offset = Vector3.down * slideDistance;
+        Vector3 prevStart = prevLevel.transform.position;
+        Vector3 nextStart = newLevel.transform.position;
+        Vector3 normalOffset = Vector3.down * slideDistance;
 
-        while (elapsed < duration)
+        while (elapsedNormal < durationNormal)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
+            elapsedNormal += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedNormal / durationNormal);
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-            oldLevel.transform.position = Vector3.Lerp(oldLevelStart, oldLevelStart + offset, smoothT);
-            newLevel.transform.position = Vector3.Lerp(newLevelStart, newLevelStart + offset, smoothT);
+            prevLevel.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
+            newLevel.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
 
             yield return null;
         }
 
-        oldLevel.SetActive(false);
+        prevLevel.SetActive(false);
         StartLevel(currentLevel);
-        isTransitioning = false;
     }
 
     IEnumerator LincolnSpeaks(){

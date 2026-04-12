@@ -1,11 +1,10 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Spoon: MonoBehaviour
 {
-    // Radius around player.
     private float radius;
-    // Used to get mouse pos.
     private Camera mainCamera;
 
     private Collider2D spoonCollider;
@@ -15,8 +14,15 @@ public class Spoon: MonoBehaviour
 
     private bool isSwinging = false;
     public float swingCooldown = 0.5f;
+    public float swingFrameDuration = 0.1f; // How long each swing frame lasts
 
-    private bool touchingBouncer = false;
+    private GameObject touchingObject = null;
+
+    public Sprite idle;
+    public Sprite leftSwing1;
+    public Sprite leftSwing2;
+    public Sprite rightSwing1;
+    public Sprite rightSwing2;
 
     void Start()
     {
@@ -25,7 +31,6 @@ public class Spoon: MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = transform.parent;
 
-        // We can change the radius by moving where the spoon is relative from the player. 
         radius = Vector2.Distance(transform.localPosition, Vector2.zero);
     }
 
@@ -33,13 +38,14 @@ public class Spoon: MonoBehaviour
     {
         RotateAroundPlayer();
 
-        // Mouse clicked.
         if (Input.GetMouseButtonDown(0) && !isSwinging){
-            StartCoroutine(SwingSpoon());
+            // Determine swing direction at moment of click
+            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            bool isLeftSwing = mouseWorldPos.x < player.position.x;
+            StartCoroutine(SwingSpoon(isLeftSwing));
         }
     }
 
-    // Rotates Spoon around player.
     void RotateAroundPlayer()
     { 
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -49,36 +55,47 @@ public class Spoon: MonoBehaviour
         transform.position = player.position + direction * radius;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        // Subtracted by 90 so that the spoon looks upwards.
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
     }
 
-    // Swings the Spoon.
-    IEnumerator SwingSpoon()
+    IEnumerator SwingSpoon(bool isLeftSwing)
     {
         isSwinging = true;
-        Debug.Log("Swing");
-        spriteRenderer.color = Color.yellow;
-        // Deflects Projectile (if exists).
+
+        // Play swing animation based on direction
+        if (isLeftSwing){
+            spriteRenderer.sprite = leftSwing1;
+            yield return new WaitForSeconds(swingFrameDuration);
+            spriteRenderer.sprite = leftSwing2;
+        }
+        else{
+            spriteRenderer.sprite = rightSwing1;
+            yield return new WaitForSeconds(swingFrameDuration);
+            spriteRenderer.sprite = rightSwing2;
+        }
+
+        // Hit detection at peak of swing
         if (touchingProjectile != null){
-            // Sets the direction of the bullet away from the spoon's direction. 
             Vector2 spoonDirection = (transform.position - player.position).normalized;
-            Vector2 deflectDirection = transform.up;
             touchingProjectile.Deflect(spoonDirection);
             Debug.Log("Deflect!");
         }
-        // Bounce off hat.
-        if (touchingBouncer){
+        if (touchingObject != null){
+            if (touchingObject.CompareTag("Enemy")){
+                touchingObject.GetComponent<enemy>().DecreaseHealth();
+            }
+
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             player.GetComponent<Rigidbody2D>().AddForce(-spoonDirection * 500);
             Debug.Log("Bounce!");
-            touchingBouncer = false;
+            touchingObject = null;
         }
-        // Waits before letting next swing. 
-        yield return new WaitForSeconds(swingCooldown);
-        isSwinging = false;
-        spriteRenderer.color = Color.white;
 
+        // Hold swing2 for remaining cooldown, then return to idle
+        yield return new WaitForSeconds(swingCooldown - swingFrameDuration);
+        spriteRenderer.sprite = idle;
+
+        isSwinging = false;
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -87,7 +104,7 @@ public class Spoon: MonoBehaviour
             touchingProjectile = other.GetComponent<projectile>();
         }
         if (other.CompareTag("Hat") || other.CompareTag("Platform") || other.CompareTag("Enemy")){
-            touchingBouncer = true;
+            touchingObject = other.gameObject;
         }
     }
 
@@ -97,7 +114,7 @@ public class Spoon: MonoBehaviour
             touchingProjectile = null;
         }
         if (other.CompareTag("Hat") && other.CompareTag("Platform") && other.CompareTag("Enemy")){
-            touchingBouncer = false;
+            touchingObject = null;
         }
     }
 
