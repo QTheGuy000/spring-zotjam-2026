@@ -41,7 +41,7 @@ public class artemis : enemy
             return;
         }
 
-        if (_health < 30 && _enraged == false)
+        if (_health < 20 && _enraged == false)
         {
             _enraged = true;
             _seconds_between_attack = _seconds_between_attack * 0.75f;
