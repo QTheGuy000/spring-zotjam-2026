@@ -142,7 +142,7 @@ MonoBehaviour:
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
   _health: 15
   isDead: 0
-  isActive: 1
+  isActive: 0
   _list_of_ranged_attacks:
   - {fileID: 411644193215084572, guid: 28021bb0516964e4ab134a9aeeb89c90, type: 3}
   - {fileID: 2916475815614008071, guid: f193b58226752d64f85dde43fce1f96c, type: 3}

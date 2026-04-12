@@ -3,7 +3,7 @@ using UnityEngine;
 public class directMeleeEnemy : enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    new void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
         base.Start();

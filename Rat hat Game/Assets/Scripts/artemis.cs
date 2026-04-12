@@ -23,7 +23,7 @@ public class artemis : enemy
     
     private ArtemisPhases current_phase = ArtemisPhases.ranged;
 
-    void Start()
+    new void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
         _attack_timer = _seconds_between_attack;

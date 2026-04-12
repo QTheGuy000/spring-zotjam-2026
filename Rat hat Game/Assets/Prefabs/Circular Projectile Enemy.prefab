@@ -116,7 +116,7 @@ MonoBehaviour:
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
   _health: 1
   isDead: 0
-  isActive: 1
+  isActive: 0
   _radius: 2
   _angles_per_second: 5
   _clockwise: 0

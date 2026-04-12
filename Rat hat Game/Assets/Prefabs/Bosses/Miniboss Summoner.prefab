@@ -339,7 +339,7 @@ MonoBehaviour:
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
   _health: 10
   isDead: 0
-  isActive: 1
+  isActive: 0
   _list_of_summonables:
   - {fileID: 8937386916994006539, guid: a851b0d919b607440bc9cee45bab3af0, type: 3}
   - {fileID: 5945344061379124843, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
