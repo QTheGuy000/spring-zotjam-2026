@@ -34,6 +34,7 @@ public class TextAnimation : MonoBehaviour
             int totalChars = textbox.textInfo.characterCount;
             // Shows each character one at a time
             for (int c = 0; c < totalChars; c ++){
+                if (textbox == null) yield break;
                 textbox.maxVisibleCharacters = c + 1;
                 // New words are indicated after spaces
                 if (dialogue[c] == ' '){

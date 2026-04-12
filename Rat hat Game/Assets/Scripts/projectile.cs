@@ -102,7 +102,6 @@ public class projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player") && !isDeflected){
-            // Player takes damage.
             Destroy(gameObject);
         }
         
@@ -124,6 +123,8 @@ public class projectile : MonoBehaviour
         _homing = false;
         _rotating = false;
         isDeflected = true;
+
+        GetComponent<SpriteRenderer>().color = Color.limeGreen;
     }
 
     public bool checkIsDeflected()

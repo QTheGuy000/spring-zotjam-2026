@@ -13,6 +13,7 @@ public class playerStats : MonoBehaviour
     public GameObject heartContainer;
     private List<Image> heartImages = new();
     private Color spriteColor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +26,7 @@ public class playerStats : MonoBehaviour
 
         spriteColor = GetComponent<SpriteRenderer>().color;
 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class playerStats : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Projectile causes damage
         if (collision.gameObject.CompareTag("Projectile"))
         {
             projectile pr = collision.gameObject.GetComponent<projectile>();
@@ -59,12 +62,13 @@ public class playerStats : MonoBehaviour
         }
 
         if (currentHealth <= 0){
+            gameObject.SetActive(false);
             Die();
         }
     }
 
     public void Die(){
-        
+        LevelManager.instance.GameOver();
     }
 
     public virtual IEnumerator TakeDamage(){

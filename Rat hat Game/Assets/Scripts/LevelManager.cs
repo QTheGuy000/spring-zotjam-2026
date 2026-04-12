@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
 
     private bool isTransitioning = false;
 
-    private LevelManager instance;
+    public static LevelManager instance;
 
     public GameObject lincolnDialogue;
     private List<string> dialogues = new(){
@@ -51,8 +51,17 @@ public class LevelManager : MonoBehaviour
         continueButton.onClick.AddListener(() => TogglePause());
         menuButton.onClick.AddListener(() => GoToMenu());
         quitButton.onClick.AddListener(() => QuitGame());
-
         pauseMenu.SetActive(false);
+
+        Button restartButton = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
+        Button menuButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
+        Button quitButton2 = gameOverMenu.transform.GetChild(3).GetComponent<Button>();
+
+        restartButton.onClick.AddListener(() => RestartLevel());
+        menuButton2.onClick.AddListener(() => GoToMenu());
+        quitButton2.onClick.AddListener(() => QuitGame());
+        gameOverMenu.SetActive(false);
+
         lincolnDialogue.SetActive(false);
 
         // Disables all other levels
@@ -220,5 +229,15 @@ public class LevelManager : MonoBehaviour
     public void QuitGame(){
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void RestartLevel(){
+        //um
+    }
+
+    public void GameOver(){
+        gameOverMenu.SetActive(true);
+        isPaused = true;
+        Time.timeScale = 0;
     }
 }
