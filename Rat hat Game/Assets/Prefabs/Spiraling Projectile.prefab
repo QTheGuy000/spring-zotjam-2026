@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 34744358859791882}
   - component: {fileID: 9028857127579545808}
   - component: {fileID: 2485966292690132583}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spiraling Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -179,5 +179,5 @@ MonoBehaviour:
   clockwise: 1
   _angles_per_second: 25
   _initial_lock_on: 1
-  starting_angle: 324
+  starting_angle: 135
   _rigidbody: {fileID: 34744358859791882}

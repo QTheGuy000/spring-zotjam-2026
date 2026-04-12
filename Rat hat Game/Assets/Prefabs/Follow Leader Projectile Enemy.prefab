@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 286766946626187309}
   - component: {fileID: 8950932203338587407}
   - component: {fileID: 1041068416211418975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

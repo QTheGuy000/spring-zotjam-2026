@@ -10,6 +10,7 @@ public class artemis : enemy
     [SerializeField] string[] _names_of_ranged_attacks;
     [SerializeField] float _seconds_between_attack;
     [SerializeField] SpriteRenderer _sprite;
+    [SerializeField] GameObject _muskrat_add;
 
     private float _attack_timer;
     private bool _enraged;
@@ -40,13 +41,19 @@ public class artemis : enemy
             return;
         }
 
-        if (_health < 10 && _enraged == false)
+        if (_health < 20 && _enraged == false)
         {
             _enraged = true;
             _seconds_between_attack = _seconds_between_attack * 0.75f;
-            _movement_speed = _movement_speed * 1.25f;
-            _vertical_acceleration_multiplier *= 1.15f;
-            _horizontal_acceleration_multiplier *= 1.15f;
+            _movement_speed = _movement_speed * 2.25f;
+            _vertical_acceleration_multiplier *= 2.15f;
+            _horizontal_acceleration_multiplier *= 2.15f;
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject instantiated_add = Instantiate(_muskrat_add, transform.position - new Vector3(3 + (i*2), 0), Quaternion.identity);
+                instantiated_add.GetComponent<followleaderProjectileEnemy>().leader = transform.gameObject;
+                instantiated_add.GetComponent<followleaderProjectileEnemy>().chaos_factor = Random.Range(0.5f, 1.5f);
+            }
         }
 
 
@@ -114,12 +121,12 @@ public class artemis : enemy
             if (current_phase == ArtemisPhases.melee)
             {
                 current_phase = ArtemisPhases.ranged;
-                _horizontal_acceleration_multiplier -= 0.1f;
+                _horizontal_acceleration_multiplier -= 0.8f;
             }
             else
             {
                 current_phase = ArtemisPhases.melee;
-                _horizontal_acceleration_multiplier += 0.1f;
+                _horizontal_acceleration_multiplier += 0.8f;
             }
 
             if (current_phase == ArtemisPhases.ranged)

@@ -8,4 +8,6 @@ public static class Statistics
     // Current Level and Stage
     public static int CurrentLevel {get; set;} = 1;
     public static int CurrentStage {get; set;} = 0;
+
+    public static int Levels {get; set;} = 6;
 }

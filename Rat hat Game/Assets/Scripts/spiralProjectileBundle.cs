@@ -7,10 +7,11 @@ public class spiralProjectileBundle : MonoBehaviour
     [SerializeField] int _projectile_count;
     [SerializeField] bool _clockwise;
     [SerializeField] float _seconds_between_projectile_spawn = 0;
+    [SerializeField] bool _fired_by_artemis = false;
     private GameObject _instantiated_projectile;
     private float _projectile_timer = 0;
     private int _summoned_projectile_count = 0;
-
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,10 @@ public class spiralProjectileBundle : MonoBehaviour
                 float _spawn_y = transform.position.y + _distance_from_center * Mathf.Sin(angle * Mathf.Deg2Rad);
                 _projectile.transform.GetComponent<projectile>().starting_angle = angle;
                 _projectile.transform.GetComponent<projectile>().clockwise = _clockwise;
+                if (_fired_by_artemis == true)
+                {
+                    _projectile.gameObject.layer = LayerMask.NameToLayer("Artemis Projectile");
+                }
                 _instantiated_projectile = Instantiate(_projectile, new Vector3(_spawn_x, _spawn_y, 0), Quaternion.identity);
 
             }
@@ -43,6 +48,10 @@ public class spiralProjectileBundle : MonoBehaviour
             float _spawn_y = transform.position.y + _distance_from_center * Mathf.Sin(angle * Mathf.Deg2Rad);
             _projectile.transform.GetComponent<projectile>().starting_angle = angle;
             _projectile.transform.GetComponent<projectile>().clockwise = _clockwise;
+            if (_fired_by_artemis == true)
+            {
+                _projectile.gameObject.layer = LayerMask.NameToLayer("Artemis Projectile");
+            }
             _instantiated_projectile = Instantiate(_projectile, new Vector3(_spawn_x, _spawn_y, 0), Quaternion.identity);
             _summoned_projectile_count += 1;
 

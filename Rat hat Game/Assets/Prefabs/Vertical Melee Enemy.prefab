@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8905878912415123297}
   - component: {fileID: 876609182189849331}
   - component: {fileID: 2606227137612769390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vertical Melee Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

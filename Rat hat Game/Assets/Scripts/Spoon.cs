@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +26,13 @@ public class Spoon: MonoBehaviour
     public Sprite rightSwing2;
     private GameObject sprite;
 
+    [SerializeField] AudioClip[] _list_of_hits;
+    [SerializeField] AudioClip[] _list_of_misses;
+
+    [SerializeField] AudioSource _hit_source;
+    [SerializeField] AudioSource _miss_source;
+
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -41,6 +49,12 @@ public class Spoon: MonoBehaviour
         RotateAroundPlayer();
 
         if (Input.GetMouseButtonDown(0) && !isSwinging){
+
+            if (touchingObject == null && touchingProjectile == null)
+            {
+                playMiss();
+            }
+
             // Determine swing direction at moment of click
             Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             bool isLeftSwing = mouseWorldPos.x < player.position.x;
@@ -87,6 +101,14 @@ public class Spoon: MonoBehaviour
         if (touchingProjectile != null){
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             touchingProjectile.Deflect(spoonDirection);
+
+            if (touchingProjectile.gameObject.layer == LayerMask.NameToLayer("Artemis Projectile")) 
+            {
+                touchingProjectile.gameObject.layer = LayerMask.NameToLayer("Projectile");
+            }
+
+            playHit();
+
             Debug.Log("Deflect!");
         }
         if (touchingObject != null){
@@ -96,9 +118,13 @@ public class Spoon: MonoBehaviour
 
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             player.GetComponent<Rigidbody2D>().AddForce(-spoonDirection * 500);
+
+            playHit();
+
             Debug.Log("Bounce!");
             touchingObject = null;
         }
+
 
         // Hold swing2 for remaining cooldown, then return to idle
         yield return new WaitForSeconds(swingCooldown - swingFrameDuration);
@@ -115,6 +141,8 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Hat") || other.CompareTag("Platform") || other.CompareTag("Enemy")){
             touchingObject = other.gameObject;
         }
+
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -136,4 +164,16 @@ public class Spoon: MonoBehaviour
     {
         spriteRenderer.sprite = idle;
     }
+    void playHit()
+    {
+        _hit_source.clip = _list_of_hits[Random.Range(0, _list_of_hits.Count())];
+        _hit_source.Play();
+    }
+
+    void playMiss()
+    {
+        _miss_source.clip = _list_of_misses[Random.Range(0, _list_of_misses.Count())];
+        _miss_source.Play();
+    }
+
 }

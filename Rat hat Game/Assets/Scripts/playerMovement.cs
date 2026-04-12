@@ -13,7 +13,6 @@ public class playerMovement : MonoBehaviour
     public float dashAmount;
     public float jumpVelocity = 10f;
     public float doubleJumpVelocity = 5f;
-    public float knockbackForce;
     playerStats pStats;
 
     private bool fell = false;
@@ -23,6 +22,11 @@ public class playerMovement : MonoBehaviour
     private float dashDecay = 0.99f;
     Vector2 moveVelocity;
     Vector2 dashVelocity;
+
+    public Vector2 knockback_additive;
+    public float seconds_of_knockback;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -98,6 +102,13 @@ public class playerMovement : MonoBehaviour
         {
             fell = false;
         }
+        if (seconds_of_knockback > 0)
+        {
+            seconds_of_knockback -= Time.deltaTime;
+            rb.linearVelocity += knockback_additive;
+        }
+
+
         //rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY), moveAmount);
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8265661215910096211}
   - component: {fileID: 1127832110965180054}
   - component: {fileID: 758977652900166608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 6932063565806991590}
   - component: {fileID: 5031679328963707534}
   - component: {fileID: 3447779025189484692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (5)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 7208131624659904198}
   - component: {fileID: 3992782058525799769}
   - component: {fileID: 15903775634193521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (4)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 6299050713233463316}
   - component: {fileID: 2275141174611094266}
   - component: {fileID: 1490350997161726956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 5034456640207857846}
   - component: {fileID: 1567428768661318184}
   - component: {fileID: 4351545629562483475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -984,7 +984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3664109896043906447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Moonworm Boss - EMPTY ALL CHILDREN
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1026,7 +1026,7 @@ GameObject:
   - component: {fileID: 965893422544193900}
   - component: {fileID: 1282414316550139222}
   - component: {fileID: 8167726164822268290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 7675874195728813885}
   - component: {fileID: 3755554695534843619}
   - component: {fileID: 5930396631364752387}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Worm Head
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1324,7 +1324,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
