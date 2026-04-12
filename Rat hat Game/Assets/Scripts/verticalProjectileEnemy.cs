@@ -69,7 +69,6 @@ public class verticalProjectileEnemy : enemy
         Vector3 line_to_target = _target.transform.position - transform.position;
         line_to_target = Vector3.Normalize(line_to_target);
         _instantiated_projectile = Instantiate(_projectile, transform.position + line_to_target * _projectile_spawn_multiplier, Quaternion.identity);
-        _instantiated_projectile.GetComponent<projectile>().setTarget(_target);
     }
 
     void _move()

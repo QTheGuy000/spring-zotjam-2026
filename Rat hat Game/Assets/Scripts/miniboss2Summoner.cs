@@ -114,10 +114,7 @@ public class miniboss2Summoner : enemy
         line_to_target = Vector3.Normalize(line_to_target);
         _instantiated_summon = Instantiate(_list_of_summonables[Random.Range(0, _list_of_summonables.Count())], transform.position + line_to_target * _summon_spawn_multiplier, Quaternion.identity);
 
-        if (_instantiated_summon.GetComponent<projectile>() != null)
-        {
-            _instantiated_summon.GetComponent<projectile>().setTarget(_target);
-        }
+
     }
 
     void _move()

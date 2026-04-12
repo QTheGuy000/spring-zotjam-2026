@@ -64,13 +64,6 @@ public class projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        
-
-        // Destroys if it goes out of screen.
-        Vector3 screenPos = mainCamera.WorldToViewportPoint(transform.position);
-        if (screenPos.x < 0 || screenPos.x > 1 || screenPos.y < 0 || screenPos.y > 1) {
-            Destroy(gameObject);
-        }
 
         
     }
@@ -104,11 +97,6 @@ public class projectile : MonoBehaviour
             Destroy(gameObject);
         }
         
-    }
-
-    public void setTarget(playerMovement _entity)
-    {
-        _target = _entity;
     }
 
     // Changes the direction of the bullet. 
