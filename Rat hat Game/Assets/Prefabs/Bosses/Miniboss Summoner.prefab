@@ -344,7 +344,7 @@ MonoBehaviour:
   - {fileID: 8937386916994006539, guid: a851b0d919b607440bc9cee45bab3af0, type: 3}
   - {fileID: 5945344061379124843, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
   - {fileID: 5159196582468760322, guid: 3ca2f447306efb843bed895953f177e7, type: 3}
-  - {fileID: 6796305026566724825, guid: ab47ee5b2a5b98a41a3e53618eb39737, type: 3}
+  - {fileID: 5945344061379124843, guid: 3df7cb19e7ac8c84fb40413f56d76d94, type: 3}
   - {fileID: 1389802379726458061, guid: 7fe8e6e6384c220448a448c9ea4679af, type: 3}
   _list_of_vanguards:
   - {fileID: 5165174300868304596}

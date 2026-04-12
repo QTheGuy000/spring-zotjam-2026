@@ -42,6 +42,17 @@ public class playerStats : MonoBehaviour
     void Update()
     {
         _invincibility_time -= Time.deltaTime;
+
+        Debug.Log(_invincibility_time);
+        if (_invincibility_time > 0)
+        {
+            rb.excludeLayers = LayerMask.GetMask("Enemy");
+        }
+        else
+        {
+            rb.excludeLayers = LayerMask.GetMask("Ignore");
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
