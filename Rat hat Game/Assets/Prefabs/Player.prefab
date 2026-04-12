@@ -217,8 +217,8 @@ MonoBehaviour:
   lostHeart: {fileID: -902318259101778010, guid: 4dd9cdefb0f5f9b45b01b03de934f6cf, type: 3}
   _hurt_audio_source: {fileID: 2852361335179181984}
   _list_of_hurt_audios:
-  - {fileID: 8300000, guid: e3c7f8b016a7ccb4ebc34caebafacca2, type: 3}
-  - {fileID: 8300000, guid: 370a35dfb96bc2c41958d5522daedf6c, type: 3}
+  - {fileID: 8300000, guid: d67a458643c912349ac9513ee5c39a7d, type: 3}
+  - {fileID: 8300000, guid: d67a458643c912349ac9513ee5c39a7d, type: 3}
 --- !u!82 &2852361335179181984
 AudioSource:
   m_ObjectHideFlags: 0
