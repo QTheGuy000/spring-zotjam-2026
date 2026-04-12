@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -24,6 +25,13 @@ public class Spoon: MonoBehaviour
     public Sprite rightSwing1;
     public Sprite rightSwing2;
 
+    [SerializeField] AudioClip[] _list_of_hits;
+    [SerializeField] AudioClip[] _list_of_misses;
+
+    [SerializeField] AudioSource _hit_source;
+    [SerializeField] AudioSource _miss_source;
+
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -39,6 +47,12 @@ public class Spoon: MonoBehaviour
         RotateAroundPlayer();
 
         if (Input.GetMouseButtonDown(0) && !isSwinging){
+
+            if (touchingObject == null && touchingProjectile == null)
+            {
+                playMiss();
+            }
+
             // Determine swing direction at moment of click
             Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             bool isLeftSwing = mouseWorldPos.x < player.position.x;
@@ -84,6 +98,7 @@ public class Spoon: MonoBehaviour
                 touchingProjectile.gameObject.layer = LayerMask.NameToLayer("Projectile");
             }
 
+            playHit();
 
             Debug.Log("Deflect!");
         }
@@ -94,9 +109,13 @@ public class Spoon: MonoBehaviour
 
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             player.GetComponent<Rigidbody2D>().AddForce(-spoonDirection * 500);
+
+            playHit();
+
             Debug.Log("Bounce!");
             touchingObject = null;
         }
+
 
         // Hold swing2 for remaining cooldown, then return to idle
         yield return new WaitForSeconds(swingCooldown - swingFrameDuration);
@@ -131,4 +150,17 @@ public class Spoon: MonoBehaviour
     {
         return isSwinging;
     }
+
+    void playHit()
+    {
+        _hit_source.clip = _list_of_hits[Random.Range(0, _list_of_hits.Count())];
+        _hit_source.Play();
+    }
+
+    void playMiss()
+    {
+        _miss_source.clip = _list_of_misses[Random.Range(0, _list_of_misses.Count())];
+        _miss_source.Play();
+    }
+
 }
