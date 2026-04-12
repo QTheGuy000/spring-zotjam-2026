@@ -57,10 +57,10 @@ public class LevelManager : MonoBehaviour
         }
 
         // Initializes UI
-        Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
-        Button restartButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
-        Button quitButton = pauseMenu.transform.GetChild(4).GetComponent<Button>();
+        Button continueButton = pauseMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
+        Button restartButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
+        Button quitButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
 
         continueButton.onClick.AddListener(() => TogglePause());
         menuButton.onClick.AddListener(() => GoToMenu());
@@ -68,9 +68,9 @@ public class LevelManager : MonoBehaviour
         quitButton.onClick.AddListener(() => QuitGame());
         pauseMenu.SetActive(false);
 
-        Button restartButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
-        Button quitButton2 = gameOverMenu.transform.GetChild(3).GetComponent<Button>();
+        Button restartButton2 = gameOverMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
+        Button quitButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
 
         restartButton2.onClick.AddListener(() => RestartLevel());
         menuButton2.onClick.AddListener(() => GoToMenu());
