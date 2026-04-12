@@ -584,7 +584,7 @@ MonoBehaviour:
   - {fileID: 5503394216952588596, guid: 0cc125ebe35c3144393568eae6e36302, type: 3}
   - {fileID: 5691977235303304494, guid: fcb304d3c7d238b47a9a4b49bb990289, type: 3}
   - {fileID: 1838514276870914367, guid: 79d3b1c18db3ccb4b8e94c184ea3021d, type: 3}
-  - {fileID: 588287946866329005, guid: 8ea1ccdd8340f7a4296fa0f9fee15b56, type: 3}
+  - {fileID: 1838514276870914367, guid: 98d77662aa1639b4c88d55318d6758cb, type: 3}
   _names_of_ranged_attacks:
   - Spiral1
   - Spiral2
@@ -593,7 +593,7 @@ MonoBehaviour:
   - Homing2
   - Normal1
   - Normal2
-  _seconds_between_attack: 1
+  _seconds_between_attack: 3
   _sprite: {fileID: 1193791382}
 --- !u!50 &1193791385
 Rigidbody2D:
