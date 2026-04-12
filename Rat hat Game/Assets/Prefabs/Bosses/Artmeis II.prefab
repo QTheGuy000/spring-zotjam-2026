@@ -141,7 +141,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 4805291879158925436}
   chaos_factor: 0
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
-  _health: 20
+  _health: 15
   isDead: 0
   isActive: 0
   _list_of_ranged_attacks:

@@ -337,7 +337,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 3305355027225318428}
   chaos_factor: 0
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
-  _health: 13
+  _health: 10
   isDead: 0
   isActive: 0
   _list_of_summonables:
