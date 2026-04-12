@@ -37,7 +37,11 @@ public class LevelManager : MonoBehaviour
         "I have never lied!",
         "I never died!",
         "I'm immortal!",
-        "New quote: I play to win the game B)"
+        "New quote: I play to win the game B)",
+        "I had a pet turkey named Jack!",
+        "I invented a device to lift boats over shallow waters!",
+        "I was the first President to have a beard!",
+        "I was shot at before my assassination and survived!"
     };
 
     public GameObject levelTransitionCloud;
@@ -189,8 +193,7 @@ public class LevelManager : MonoBehaviour
 
         StartCoroutine(GrowMoon()); // Grows during transition
 
-        // Next Level Transition (Uses Clouds)
-        if (isMiniBoss && currentStage >= transform.childCount - 1){
+        if (currentStage >= transform.childCount - 1){
             GameObject oldStage = transform.GetChild(currentStage - 1).gameObject;
             GameObject backgroundStage = transform.GetChild(currentStage).gameObject;
 
@@ -233,45 +236,7 @@ public class LevelManager : MonoBehaviour
             }
 
             levelTransitionCloud.SetActive(false);
-        }
 
-        // Next Stage Transition
-        if (!isMiniBoss || currentStage < transform.childCount - 1){
-            // Otherwise, goes to next stage.
-            // Shift all remaining stages down instantly
-            for (int i = currentStage + 1; i < transform.childCount; i++)
-            {
-                Transform stage = transform.GetChild(i);
-                stage.position += Vector3.down * slideDistance;
-            }
-
-            GameObject prevStage = transform.GetChild(currentStage - 1).gameObject;
-            GameObject newStage = transform.GetChild(currentStage).gameObject;
-            newStage.SetActive(true);
-
-            float elapsedNormal = 0f;
-            float durationNormal = slideDistance / slideSpeed;
-
-            Vector3 prevStart = prevStage.transform.position;
-            Vector3 nextStart = newStage.transform.position;
-            Vector3 normalOffset = Vector3.down * slideDistance;
-
-            while (elapsedNormal < durationNormal)
-            {
-                elapsedNormal += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsedNormal / durationNormal);
-                float smoothT = Mathf.SmoothStep(0f, 1f, t);
-
-                prevStage.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
-                newStage.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
-
-                yield return null;
-            }
-            prevStage.SetActive(false);
-        }
-
-        // Next Level
-        if (currentStage >= transform.childCount - 1){
             levelComplete = true;
             Statistics.CurrentLevel += 1;
             Statistics.CurrentStage = 0;
@@ -280,16 +245,46 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("Level" + Statistics.CurrentLevel + "Scene");
             yield break;
         }
-        // Next Stage
-        else{
-            StartStage(currentStage);
+
+        // Otherwise, goes to next stage.
+        // Shift all remaining stages down instantly
+        for (int i = currentStage + 1; i < transform.childCount; i++)
+        {
+            Transform stage = transform.GetChild(i);
+            stage.position += Vector3.down * slideDistance;
         }
+
+        GameObject prevStage = transform.GetChild(currentStage - 1).gameObject;
+        GameObject newStage = transform.GetChild(currentStage).gameObject;
+        newStage.SetActive(true);
+
+        float elapsedNormal = 0f;
+        float durationNormal = slideDistance / slideSpeed;
+
+        Vector3 prevStart = prevStage.transform.position;
+        Vector3 nextStart = newStage.transform.position;
+        Vector3 normalOffset = Vector3.down * slideDistance;
+
+        while (elapsedNormal < durationNormal)
+        {
+            elapsedNormal += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedNormal / durationNormal);
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+            prevStage.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
+            newStage.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
+
+            yield return null;
+        }
+
+        prevStage.SetActive(false);
+        StartStage(currentStage);
     }
 
     IEnumerator LincolnSpeaks(){
         lincolnDialogue.SetActive(true);
 
-        string text = dialogues[currentStage];
+        string text = dialogues[UnityEngine.Random.Range(0, dialogues.Count)];
         GameObject textbox = lincolnDialogue.transform.GetChild(0).gameObject;
         TextAnimation textanim = textbox.GetComponent<TextAnimation>();
 

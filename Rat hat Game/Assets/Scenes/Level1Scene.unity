@@ -5006,7 +5006,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7684888172474171163, guid: 1fc3e7aaa27f687408f68cfe0b6aa3da, type: 3}
+  m_Sprite: {fileID: 7319044252133596480, guid: 34ea6e2d18772484f8036927e8bbce81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5381,6 +5381,7 @@ MonoBehaviour:
   dialogues: []
   timeBtwnChars: 0.05
   timeBtwnWords: 0.05
+  timeBtwnDialogues: 0
 --- !u!1001 &1745946337
 PrefabInstance:
   m_ObjectHideFlags: 0
