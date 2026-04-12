@@ -34,6 +34,11 @@ public class followleaderProjectileEnemy : enemy
     // Update is called once per frame
     void Update()
     {
+        if (isActive == false || isDead == false)
+        {
+            return;
+        }
+
         _time += Time.deltaTime;
         _projectile_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
@@ -49,6 +54,11 @@ public class followleaderProjectileEnemy : enemy
 
     private void FixedUpdate()
     {
+        if (isActive == false || isDead == false)
+        {
+            return;
+        }
+
         _target = gameController.instance.player;
         _move();
         if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 

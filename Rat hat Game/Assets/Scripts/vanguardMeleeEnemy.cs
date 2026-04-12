@@ -22,6 +22,11 @@ public class vanguardMeleeEnemy : enemy
 
     private void FixedUpdate()
     {
+        if (isActive == false || isDead == false)
+        {
+            return;
+        }
+
         _move();
     }
 

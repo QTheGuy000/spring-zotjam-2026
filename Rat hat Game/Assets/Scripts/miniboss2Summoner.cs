@@ -41,6 +41,11 @@ public class miniboss2Summoner : enemy
     // Update is called once per frame
     void Update()
     {
+        if (isActive == false || isDead == false)
+        {
+            return;
+        }
+
         _time += Time.deltaTime;
         _summon_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
@@ -56,6 +61,11 @@ public class miniboss2Summoner : enemy
 
     private void FixedUpdate()
     {
+        if (isActive == false || isDead == false)
+        {
+            return;
+
+        }
         _target = gameController.instance.player;
         _move();
         _rotateVanguards();
