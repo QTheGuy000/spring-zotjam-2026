@@ -5633,9 +5633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cef33854c9e6e47abe4a8674ab16a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTracker
+  gameComplete: 0
   levelComplete: 0
-  stageComplete: 0
-  currentStage: 0
+  currentLevel: 0
   isPaused: 0
   pauseMenu: {fileID: 1400978945}
   gameOverMenu: {fileID: 1873649168}
@@ -6540,17 +6540,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.065107346}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9142857, y: 3.6571429}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 3.5787978}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1687606726
 SpriteRenderer:
@@ -6597,11 +6597,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1499043459
-  m_SortingLayer: 1
+  m_SortingLayerID: 856290323
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8717398645140160564, guid: e2b615a0825b24e4cbb62470ebfbfb33, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6620,7 +6620,7 @@ Transform:
   m_GameObject: {fileID: 1687606724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 0}
+  m_LocalPosition: {x: 0, y: -5.65, z: 0}
   m_LocalScale: {x: 3.2483885, y: 3.1866, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9758,50 +9758,6 @@ PrefabInstance:
     - target: {fileID: 6414178282513333582, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600808245703395649, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600808245703395649, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600808245703395649, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600808245703395649, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6600808245703395649, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775243058783837065, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6775243058783837065, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7425773998694298211, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3411414237561161789, guid: 7354a78587426ef4db61f941d0b1ac17, type: 3}
-    - target: {fileID: 7425773998694298211, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7425773998694298211, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7425773998694298211, guid: 792827c79e442f843a9030bd80d3bd8a, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1857315319
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

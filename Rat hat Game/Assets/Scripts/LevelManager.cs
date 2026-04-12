@@ -42,6 +42,12 @@ public class LevelManager : MonoBehaviour
 
     public GameObject levelTransitionCloud;
 
+    public GameObject moon;
+    private float moonScaleIncrement = 0.2f;  // How much the moon grows per stage
+    private float moonScaleDuration = 1f;     // How long the grow animation takes
+
+    public bool isMiniBoss = false;
+
     private void Awake()
     {
         currentStage = Statistics.CurrentStage;
@@ -57,10 +63,10 @@ public class LevelManager : MonoBehaviour
         }
 
         // Initializes UI
-        Button continueButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
-        Button restartButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
-        Button quitButton = pauseMenu.transform.GetChild(4).GetComponent<Button>();
+        Button continueButton = pauseMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton = pauseMenu.transform.GetChild(1).GetComponent<Button>();
+        Button restartButton = pauseMenu.transform.GetChild(2).GetComponent<Button>();
+        Button quitButton = pauseMenu.transform.GetChild(3).GetComponent<Button>();
 
         continueButton.onClick.AddListener(() => TogglePause());
         menuButton.onClick.AddListener(() => GoToMenu());
@@ -68,9 +74,9 @@ public class LevelManager : MonoBehaviour
         quitButton.onClick.AddListener(() => QuitGame());
         pauseMenu.SetActive(false);
 
-        Button restartButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
-        Button menuButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
-        Button quitButton2 = gameOverMenu.transform.GetChild(3).GetComponent<Button>();
+        Button restartButton2 = gameOverMenu.transform.GetChild(0).GetComponent<Button>();
+        Button menuButton2 = gameOverMenu.transform.GetChild(1).GetComponent<Button>();
+        Button quitButton2 = gameOverMenu.transform.GetChild(2).GetComponent<Button>();
 
         restartButton2.onClick.AddListener(() => RestartLevel());
         menuButton2.onClick.AddListener(() => GoToMenu());
@@ -92,6 +98,9 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1; // Add this!
         isPaused = false;   // Add this!
         isTransitioning = true;
+
+        // At the end of Awake, after other setup:
+        moon.transform.localScale = new Vector3(Statistics.MoonScale, Statistics.MoonScale, Statistics.MoonScale);
     }
 
     void Start()
@@ -178,7 +187,10 @@ public class LevelManager : MonoBehaviour
         currentStage++;
         Statistics.CurrentStage = currentStage;
 
-        if (currentStage >= transform.childCount - 1){
+        StartCoroutine(GrowMoon()); // Grows during transition
+
+        // Next Level Transition (Uses Clouds)
+        if (isMiniBoss && currentStage >= transform.childCount - 1){
             GameObject oldStage = transform.GetChild(currentStage - 1).gameObject;
             GameObject backgroundStage = transform.GetChild(currentStage).gameObject;
 
@@ -221,7 +233,45 @@ public class LevelManager : MonoBehaviour
             }
 
             levelTransitionCloud.SetActive(false);
+        }
 
+        // Next Stage Transition
+        if (!isMiniBoss || currentStage < transform.childCount - 1){
+            // Otherwise, goes to next stage.
+            // Shift all remaining stages down instantly
+            for (int i = currentStage + 1; i < transform.childCount; i++)
+            {
+                Transform stage = transform.GetChild(i);
+                stage.position += Vector3.down * slideDistance;
+            }
+
+            GameObject prevStage = transform.GetChild(currentStage - 1).gameObject;
+            GameObject newStage = transform.GetChild(currentStage).gameObject;
+            newStage.SetActive(true);
+
+            float elapsedNormal = 0f;
+            float durationNormal = slideDistance / slideSpeed;
+
+            Vector3 prevStart = prevStage.transform.position;
+            Vector3 nextStart = newStage.transform.position;
+            Vector3 normalOffset = Vector3.down * slideDistance;
+
+            while (elapsedNormal < durationNormal)
+            {
+                elapsedNormal += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedNormal / durationNormal);
+                float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+                prevStage.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
+                newStage.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
+
+                yield return null;
+            }
+            prevStage.SetActive(false);
+        }
+
+        // Next Level
+        if (currentStage >= transform.childCount - 1){
             levelComplete = true;
             Statistics.CurrentLevel += 1;
             Statistics.CurrentStage = 0;
@@ -230,40 +280,10 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("Level" + Statistics.CurrentLevel + "Scene");
             yield break;
         }
-
-        // Otherwise, goes to next stage.
-        // Shift all remaining stages down instantly
-        for (int i = currentStage + 1; i < transform.childCount; i++)
-        {
-            Transform stage = transform.GetChild(i);
-            stage.position += Vector3.down * slideDistance;
+        // Next Stage
+        else{
+            StartStage(currentStage);
         }
-
-        GameObject prevStage = transform.GetChild(currentStage - 1).gameObject;
-        GameObject newStage = transform.GetChild(currentStage).gameObject;
-        newStage.SetActive(true);
-
-        float elapsedNormal = 0f;
-        float durationNormal = slideDistance / slideSpeed;
-
-        Vector3 prevStart = prevStage.transform.position;
-        Vector3 nextStart = newStage.transform.position;
-        Vector3 normalOffset = Vector3.down * slideDistance;
-
-        while (elapsedNormal < durationNormal)
-        {
-            elapsedNormal += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedNormal / durationNormal);
-            float smoothT = Mathf.SmoothStep(0f, 1f, t);
-
-            prevStage.transform.position = Vector3.Lerp(prevStart, prevStart + normalOffset, smoothT);
-            newStage.transform.position = Vector3.Lerp(nextStart, nextStart + normalOffset, smoothT);
-
-            yield return null;
-        }
-
-        prevStage.SetActive(false);
-        StartStage(currentStage);
     }
 
     IEnumerator LincolnSpeaks(){
@@ -280,6 +300,26 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         lincolnDialogue.SetActive(false);
+    }
+
+    IEnumerator GrowMoon()
+    {
+        float elapsed = 0f;
+        Vector3 startScale = moon.transform.localScale;
+        float targetScaleValue = Statistics.MoonScale + moonScaleIncrement;
+        Vector3 targetScale = new Vector3(targetScaleValue, targetScaleValue, targetScaleValue);
+
+        while (elapsed < moonScaleDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / moonScaleDuration);
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+            moon.transform.localScale = Vector3.Lerp(startScale, targetScale, smoothT);
+            yield return null;
+        }
+
+        moon.transform.localScale = targetScale;
+        Statistics.MoonScale = targetScaleValue; // Save to Statistics
     }
 
     bool AllEnemiesDead()

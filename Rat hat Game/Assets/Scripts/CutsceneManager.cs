@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
@@ -35,6 +36,9 @@ public class CutsceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
             StopAllCoroutines();
             cutsceneEnded = true;
+        }
+        if (cutsceneEnded){
+            StartCoroutine(StartGame());
         }
     }
 
@@ -113,6 +117,11 @@ public class CutsceneManager : MonoBehaviour
     // Returns a bool indicating if the cutscenes have finished
     public bool IsCutsceneEnded(){
         return cutsceneEnded;
+    }
+
+    public IEnumerator StartGame(){
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Level1Scene");
     }
 
 }
