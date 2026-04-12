@@ -113,8 +113,12 @@ public class miniboss2Summoner : enemy
     {
         Vector3 line_to_target = _target.transform.position - transform.position;
         line_to_target = Vector3.Normalize(line_to_target);
-        _instantiated_summon = Instantiate(_list_of_summonables[Random.Range(0, _list_of_summonables.Count())], transform.position + line_to_target * _summon_spawn_multiplier, Quaternion.identity);
-
+        int summon_index = Random.Range(0, _list_of_summonables.Count());
+        _instantiated_summon = Instantiate(_list_of_summonables[summon_index], transform.position + line_to_target * _summon_spawn_multiplier, Quaternion.identity);
+        if (summon_index > 0 && summon_index < 4)
+        {
+            _instantiated_summon.transform.GetComponent<enemy>().isActive = true;
+        }
 
     }
 
