@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8035112846851049891}
   - component: {fileID: 1557219859902452337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Artemis Spiral 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,3 +49,4 @@ MonoBehaviour:
   _projectile_count: 8
   _clockwise: 1
   _seconds_between_projectile_spawn: 0.5
+  _fired_by_artemis: 1

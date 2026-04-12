@@ -65,6 +65,13 @@ public class Spoon: MonoBehaviour
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             Vector2 deflectDirection = transform.up;
             touchingProjectile.Deflect(spoonDirection);
+
+            if (touchingProjectile.gameObject.layer == LayerMask.NameToLayer("Artemis Projectile")) 
+            {
+                touchingProjectile.gameObject.layer = LayerMask.NameToLayer("Projectile");
+            }
+
+
             Debug.Log("Deflect!");
         }
         // Bounce off hat.
@@ -89,6 +96,8 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Hat") || other.CompareTag("Platform") || other.CompareTag("Enemy")){
             touchingBouncer = true;
         }
+
+
     }
 
     void OnTriggerExit2D(Collider2D other)

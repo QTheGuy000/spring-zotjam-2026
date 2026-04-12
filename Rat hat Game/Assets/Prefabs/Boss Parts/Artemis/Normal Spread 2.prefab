@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4298754480767996871}
   - component: {fileID: 5382368267449906952}
   - component: {fileID: 7858412803377156866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile (5)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 807174868193068663}
   - component: {fileID: 5508587321047420848}
   - component: {fileID: 229522870624711993}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile (4)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358692937917203342}
   - component: {fileID: -4134877545634636310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Spread 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 137309678469916810}
   - component: {fileID: 8433794080677601080}
   - component: {fileID: 26843563598225133}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile (1)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 4585708007415229035}
   - component: {fileID: 5382222213641181689}
   - component: {fileID: 7522206785761555746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 763544258531578499}
   - component: {fileID: 3976319556015949346}
   - component: {fileID: 6244726184463269244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile (3)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 4255719599543521070}
   - component: {fileID: 7255470334878846058}
   - component: {fileID: 6146112423015848407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Normal Projectile (2)
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -1071,7 +1071,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
