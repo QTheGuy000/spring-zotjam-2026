@@ -16,7 +16,6 @@ public class TextAnimation : MonoBehaviour
     // Speed of revealing text
     [SerializeField] private float timeBtwnChars = 0.05f;
     [SerializeField] private float timeBtwnWords = 0.05f;
-    [SerializeField] private float timeBtwnDialogues = 0f;
     
     void Awake(){
         textbox = GetComponent<TMP_Text>();
@@ -47,7 +46,6 @@ public class TextAnimation : MonoBehaviour
                 }
                 
             }
-            yield return new WaitForSeconds(timeBtwnDialogues);
         }
         // Reaching here means all dialogues have been finished
     }

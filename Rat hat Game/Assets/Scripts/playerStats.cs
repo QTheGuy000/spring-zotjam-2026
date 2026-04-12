@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
 
 public class playerStats : MonoBehaviour
 {
@@ -18,10 +17,6 @@ public class playerStats : MonoBehaviour
     private float _max_invincibility_time = 0.25f;
     private float _enemy_collision_time = 0;
     public Sprite lostHeart;
-
-    [SerializeField] AudioSource _hurt_audio_source;
-    [SerializeField] AudioClip[] _list_of_hurt_audios;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,17 +37,6 @@ public class playerStats : MonoBehaviour
     void Update()
     {
         _invincibility_time -= Time.deltaTime;
-
-        Debug.Log(_invincibility_time);
-        if (_invincibility_time > 0)
-        {
-            rb.excludeLayers = LayerMask.GetMask("Enemy");
-        }
-        else
-        {
-            rb.excludeLayers = LayerMask.GetMask("Ignore");
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -107,7 +91,6 @@ public class playerStats : MonoBehaviour
     public void DecreaseHealth(int health = 1)
     {
         _invincibility_time = _max_invincibility_time;
-        playHurt();
         Camera.main.GetComponent<cameraController>().AddCameraShake(0.1f);
         if (currentHealth > 0){
             heartImages[currentHealth - 1].sprite = lostHeart;
@@ -134,12 +117,5 @@ public class playerStats : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 0.4f);
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
-    }
-
-
-    void playHurt()
-    {
-        _hurt_audio_source.clip = _list_of_hurt_audios[Random.Range(0, _list_of_hurt_audios.Count())];
-        _hurt_audio_source.Play();
     }
 }

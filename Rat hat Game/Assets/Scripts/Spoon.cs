@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spoon: MonoBehaviour
 {
-    private float radius;
+    public float radius;
     private Camera mainCamera;
 
     private Collider2D spoonCollider;
@@ -24,6 +24,7 @@ public class Spoon: MonoBehaviour
     public Sprite leftSwing2;
     public Sprite rightSwing1;
     public Sprite rightSwing2;
+    private GameObject sprite;
 
     [SerializeField] AudioClip[] _list_of_hits;
     [SerializeField] AudioClip[] _list_of_misses;
@@ -37,6 +38,7 @@ public class Spoon: MonoBehaviour
         mainCamera = Camera.main;
         spoonCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sprite = transform.GetChild(0).gameObject;
         player = transform.parent;
 
         radius = Vector2.Distance(transform.localPosition, Vector2.zero);
@@ -85,7 +87,7 @@ public class Spoon: MonoBehaviour
             Debug.Log("AFTER");
             /*spriteRenderer.sprite = leftSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
-            spriteRenderer.sprite = leftSwing2;
+            spriteRenderer.sprite = leftSwing2;*/
         }
         else{
 
@@ -95,7 +97,7 @@ public class Spoon: MonoBehaviour
             Debug.Log("AFTER");
             /*spriteRenderer.sprite = rightSwing1;
             yield return new WaitForSeconds(swingFrameDuration);
-            spriteRenderer.sprite = rightSwing2;
+            spriteRenderer.sprite = rightSwing2;*/
         }
 
         // Hit detection at peak of swing
