@@ -34,7 +34,7 @@ public class followleaderProjectileEnemy : enemy
     // Update is called once per frame
     void Update()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }
@@ -54,7 +54,7 @@ public class followleaderProjectileEnemy : enemy
 
     private void FixedUpdate()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }

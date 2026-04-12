@@ -20,7 +20,7 @@ public class meleeEnemy : enemy
     // Update is called once per frame
     void Update()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }
@@ -32,7 +32,7 @@ public class meleeEnemy : enemy
 
     private void FixedUpdate()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }

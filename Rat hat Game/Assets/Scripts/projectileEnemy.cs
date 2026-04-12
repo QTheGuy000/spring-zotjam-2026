@@ -30,7 +30,7 @@ public class ProjectileEnemy : enemy
     // Update is called once per frame
     void Update()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }
@@ -50,7 +50,7 @@ public class ProjectileEnemy : enemy
 
     private void FixedUpdate()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }

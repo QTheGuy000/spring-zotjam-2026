@@ -11,7 +11,7 @@ public class directMeleeEnemy : enemy
     // Update is called once per frame
     void Update()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }
@@ -23,7 +23,7 @@ public class directMeleeEnemy : enemy
 
     private void FixedUpdate()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }

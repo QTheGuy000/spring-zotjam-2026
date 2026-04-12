@@ -26,6 +26,12 @@ public class verticalMeleeEnemy : enemy
     // Update is called once per frame
     void Update()
     {
+        if (isActive == false || isDead == true)
+        {
+            return;
+        }
+
+
         _movement_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
     }
@@ -33,6 +39,12 @@ public class verticalMeleeEnemy : enemy
 
     private void FixedUpdate()
     {
+        if (isActive == false || isDead == true)
+        {
+            return;
+        }
+
+
         _target = gameController.instance.player;
         _move();
         if (_force_capping_timer < 0) // when _force_capping_timer hits 0, velocity is normalized and multiplied by movement speed 

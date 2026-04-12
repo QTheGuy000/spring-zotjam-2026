@@ -41,7 +41,7 @@ public class miniboss2Summoner : enemy
     // Update is called once per frame
     void Update()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
         }
@@ -61,7 +61,7 @@ public class miniboss2Summoner : enemy
 
     private void FixedUpdate()
     {
-        if (isActive == false || isDead == false)
+        if (isActive == false || isDead == true)
         {
             return;
 
