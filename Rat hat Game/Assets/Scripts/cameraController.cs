@@ -19,7 +19,7 @@ public class cameraController : MonoBehaviour
             transform.position = new Vector3(0, 0, -15);
         }
     }
-    public void add_camera_shake(float seconds)
+    public void AddCameraShake(float seconds)
     {
         _seconds_of_camera_shake += seconds;
     }

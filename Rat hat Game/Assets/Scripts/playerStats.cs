@@ -43,7 +43,7 @@ public class playerStats : MonoBehaviour
             projectile pr = collision.gameObject.GetComponent<projectile>();
             if (!pr.checkIsDeflected())
             {
-                Debug.Log(pr.checkIsDeflected());
+                //Debug.Log(pr.checkIsDeflected());
                 DecreaseHealth();
                 Vector2 dir = collision.contacts[0].normal;
                 dir = new Vector2(dir.x * 10, dir.y);
@@ -55,6 +55,7 @@ public class playerStats : MonoBehaviour
 
     public void DecreaseHealth(int health = 1)
     {
+        Camera.main.GetComponent<cameraController>().AddCameraShake(0.1f);
         if (currentHealth > 0){
             heartImages[currentHealth - 1].enabled = false;
             currentHealth--;
