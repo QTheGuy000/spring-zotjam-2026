@@ -78,6 +78,13 @@ public class Spoon: MonoBehaviour
         if (touchingProjectile != null){
             Vector2 spoonDirection = (transform.position - player.position).normalized;
             touchingProjectile.Deflect(spoonDirection);
+
+            if (touchingProjectile.gameObject.layer == LayerMask.NameToLayer("Artemis Projectile")) 
+            {
+                touchingProjectile.gameObject.layer = LayerMask.NameToLayer("Projectile");
+            }
+
+
             Debug.Log("Deflect!");
         }
         if (touchingObject != null){
@@ -106,6 +113,8 @@ public class Spoon: MonoBehaviour
         if (other.CompareTag("Hat") || other.CompareTag("Platform") || other.CompareTag("Enemy")){
             touchingObject = other.gameObject;
         }
+
+
     }
 
     void OnTriggerExit2D(Collider2D other)

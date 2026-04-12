@@ -11,6 +11,7 @@ public class followleaderProjectileEnemy : enemy
 
 
     private GameObject _instantiated_projectile;
+    private bool _leader_died = false;
     [SerializeField] GameObject _projectile;
     [SerializeField] float _seconds_between_projectiles = 1;
     [SerializeField] float _projectile_spawn_multiplier = 1.2f;
@@ -61,6 +62,13 @@ public class followleaderProjectileEnemy : enemy
             _sprite.flipX = false;
         }
 
+        if (leader == null && _leader_died == false)
+        {
+            _target_x = Random.Range(-8, 8);
+            _target_y = Random.Range(-4, 4);
+            _leader_died = true;
+        }
+
     }
 
     private void FixedUpdate()
@@ -102,11 +110,7 @@ public class followleaderProjectileEnemy : enemy
 
             }
 
-            else
-            {
-                _target_x = Random.Range(-8, 8);
-                _target_y = Random.Range(-4, 4);
-            }
+
 
         }
 

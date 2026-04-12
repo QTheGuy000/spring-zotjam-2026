@@ -54,6 +54,7 @@ public class miniboss2Summoner : enemy
 
         if (_summon_timer <= 0) // when _projectile_timer hits 0, fires projectile
         {
+            _seconds_between_summon += 0.5f;
             _summon_timer = _seconds_between_summon;
             _summonEntity();
         }

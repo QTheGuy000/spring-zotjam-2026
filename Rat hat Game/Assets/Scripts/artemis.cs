@@ -40,13 +40,13 @@ public class artemis : enemy
             return;
         }
 
-        if (_health < 10 && _enraged == false)
+        if (_health < 7 && _enraged == false)
         {
             _enraged = true;
             _seconds_between_attack = _seconds_between_attack * 0.75f;
-            _movement_speed = _movement_speed * 1.25f;
-            _vertical_acceleration_multiplier *= 1.15f;
-            _horizontal_acceleration_multiplier *= 1.15f;
+            _movement_speed = _movement_speed * 2.25f;
+            _vertical_acceleration_multiplier *= 2.15f;
+            _horizontal_acceleration_multiplier *= 2.15f;
         }
 
 
@@ -114,12 +114,12 @@ public class artemis : enemy
             if (current_phase == ArtemisPhases.melee)
             {
                 current_phase = ArtemisPhases.ranged;
-                _horizontal_acceleration_multiplier -= 0.1f;
+                _horizontal_acceleration_multiplier -= 0.8f;
             }
             else
             {
                 current_phase = ArtemisPhases.melee;
-                _horizontal_acceleration_multiplier += 0.1f;
+                _horizontal_acceleration_multiplier += 0.8f;
             }
 
             if (current_phase == ArtemisPhases.ranged)

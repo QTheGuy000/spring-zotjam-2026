@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3252848070545194469}
   - component: {fileID: 2507882591950827454}
   - component: {fileID: 8078794600026537959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Worm Head
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -151,6 +151,7 @@ MonoBehaviour:
   _projectile: {fileID: 5015027509498084559, guid: a62f1d4ff4d34c6409abaf400b504169, type: 3}
   _seconds_between_projectiles: 2
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 0}
 --- !u!58 &8078794600026537959
 CircleCollider2D:
   m_ObjectHideFlags: 0

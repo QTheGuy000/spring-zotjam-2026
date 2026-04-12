@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1383211638120203747}
   - component: {fileID: 3021759189990931556}
   - component: {fileID: 3360548636606996804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 0}
 --- !u!1 &1897476868716944442
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ GameObject:
   - component: {fileID: 4394900785064347401}
   - component: {fileID: 5987494346641652456}
   - component: {fileID: 5225373309980665729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -403,6 +404,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 0}
 --- !u!1 &7472408792957309428
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +418,7 @@ GameObject:
   - component: {fileID: 7948629909289875168}
   - component: {fileID: 7786250378758829456}
   - component: {fileID: 4743744926598129548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -587,6 +589,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 0}
 --- !u!1 &8439018029249848606
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +603,7 @@ GameObject:
   - component: {fileID: 582925938665458661}
   - component: {fileID: 317064777686181419}
   - component: {fileID: 8911682679722168221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -771,3 +774,4 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 0}
