@@ -34,6 +34,9 @@ public class enemy : MonoBehaviour
     public bool isDead = false;
     public bool isActive = false;
     
+    public void Start(){
+        spriteColor = GetComponent<SpriteRenderer>().color;
+    }
 
     void CheckHealth()
     {

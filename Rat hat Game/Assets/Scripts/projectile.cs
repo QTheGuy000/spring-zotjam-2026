@@ -117,6 +117,9 @@ public class projectile : MonoBehaviour
         isDeflected = true;
 
         GetComponent<SpriteRenderer>().color = Color.limeGreen;
+        // Remove Enemy layer from excluded layers
+        _rigidbody.excludeLayers &= ~(1 << LayerMask.NameToLayer("Enemy"));
+
     }
 
     public bool checkIsDeflected(){

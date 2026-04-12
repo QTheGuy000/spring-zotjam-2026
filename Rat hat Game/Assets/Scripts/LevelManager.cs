@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     public float slideSpeed = 5f;         // Speed of the level transition
     public float slideDistance = 10f;     // How far the level slides down (match your level height)
-    public float enemyStartDelay = 3f;    // Seconds before enemies activate
+    public int enemyStartDelay = 3;     // Seconds before level starts
 
     private bool isTransitioning = false;
 
@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
     private List<string> dialogues = new(){
         "I am the 16th President!",
         "I was the tallest President!",
-        "I signed the Emancimation Proclaimation!",
+        "I signed the Emancimation Proclamation!",
         "My favorite meal is the Chicken Fricassee!"
     };
 
@@ -73,11 +73,7 @@ public class LevelManager : MonoBehaviour
             transform.GetChild(c).gameObject.SetActive(false);
         }
 
-        // First level is enabled
-        GameObject firstLevel = transform.GetChild(0).gameObject;
-        firstLevel.SetActive(true);
-        PopulateEnemies(firstLevel);
-        StartCoroutine(ActivateEnemies());
+        StartLevel(currentLevel);
     }
 
     void Start()
@@ -90,6 +86,10 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)){
             TogglePause();
+        }
+
+        if (gameComplete){
+            return;
         }
 
         // Lets transition do transition
@@ -109,6 +109,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void StartLevel(int levelNum){
+        GameObject level = transform.GetChild(levelNum).gameObject;
+
+        PopulateEnemies(level);
+        StartCoroutine(ActivateEnemies());
+    }
+
     // Populates enemies list from the level's enemies child object
     void PopulateEnemies(GameObject level)
     {
@@ -120,8 +127,18 @@ public class LevelManager : MonoBehaviour
     // Activates all enemies in the current level
     IEnumerator ActivateEnemies()
     {
-        yield return new WaitForSeconds(enemyStartDelay);
+        yield return new WaitForSeconds(1);
+        // Starts countdown.
+        countdownMenu.SetActive(true);
+        for (int i = enemyStartDelay; i > 0; i--){
+            countdownMenu.GetComponent<TMP_Text>().text = i.ToString();
+            yield return new WaitForSeconds(1);
+        }
+        countdownMenu.GetComponent<TMP_Text>().text = "GO";
+        yield return new WaitForSeconds(1);
+        countdownMenu.SetActive(false);
 
+        // Activates
         foreach (enemy e in enemies){
             if (e != null){
                 e.isActive = true;
@@ -131,29 +148,24 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator NextLevel()
     {
-        // Lincoln speaks truth first.
+        isTransitioning = true; // Move this to the very top!
+
         yield return StartCoroutine(LincolnSpeaks());
 
-        isTransitioning = true;
         currentLevel++;
 
         if (currentLevel >= transform.childCount)
         {
             Debug.Log("No more levels!");
-            isTransitioning = false;
             gameComplete = true;
+            isTransitioning = false;
             yield break;
         }
 
         GameObject oldLevel = transform.GetChild(currentLevel - 1).gameObject;
         GameObject newLevel = transform.GetChild(currentLevel).gameObject;
-
-        // Position new level above the screen
-        //newLevel.transform.position = newLevel.transform.position + Vector3.up * slideDistance;
         newLevel.SetActive(true);
-        PopulateEnemies(newLevel);
 
-        // Slide both levels downward simultaneously
         float elapsed = 0f;
         float duration = slideDistance / slideSpeed;
 
@@ -165,7 +177,6 @@ public class LevelManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            // Ease in-out for smoother feel
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
             oldLevel.transform.position = Vector3.Lerp(oldLevelStart, oldLevelStart + offset, smoothT);
@@ -175,7 +186,7 @@ public class LevelManager : MonoBehaviour
         }
 
         oldLevel.SetActive(false);
-        StartCoroutine(ActivateEnemies());
+        StartLevel(currentLevel);
         isTransitioning = false;
     }
 
@@ -204,7 +215,6 @@ public class LevelManager : MonoBehaviour
             if (enemy == null) continue;
             if (!enemy.isDead) return false;
         }
-
         return true;
     }
 

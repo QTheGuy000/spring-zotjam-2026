@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5326550839170527572}
   - component: {fileID: 3628431436922566676}
   - component: {fileID: 9075023115376287818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Still Projectile Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 6.4345956
 --- !u!50 &3628431436922566676
 Rigidbody2D:
   serializedVersion: 5
@@ -183,5 +183,5 @@ MonoBehaviour:
   _amplitude: 4
   _frequency: 4
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 5
+  _seconds_between_projectiles: 2
   _projectile_spawn_multiplier: 1.2
