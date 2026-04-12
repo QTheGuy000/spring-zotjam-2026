@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Analytics;
 
@@ -26,13 +27,19 @@ public class enemy : MonoBehaviour
     [SerializeField] protected float _movement_speed = 3f;
     [SerializeField] protected Rigidbody2D _rigidbody;
     public float chaos_factor = 0;
+    private Color spriteColor;
 
     // Main Stats
     [SerializeField] protected int _health = 2;
     public bool isDead = false;
     public bool isActive = false;
     
-    void _checkHealth()
+    
+    public void Start(){
+        spriteColor = GetComponent<SpriteRenderer>().color;
+    }
+
+    void CheckHealth()
     {
         if (_health < 0)
         {
@@ -42,10 +49,21 @@ public class enemy : MonoBehaviour
     }
 
 
-    public void receiveDamage(int damage_amount)
+    public void ReceiveDamage(int damage_amount)
     {
         _health -= damage_amount;
-        _checkHealth();
+        CheckHealth();
+    }
+
+    public virtual IEnumerator TakeDamage(){
+        // Flashes damage twice
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 0.4f);
+        yield return new WaitForSeconds(0.2f);
+        gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 0.4f);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<SpriteRenderer>().color = spriteColor;
     }
 
 }
