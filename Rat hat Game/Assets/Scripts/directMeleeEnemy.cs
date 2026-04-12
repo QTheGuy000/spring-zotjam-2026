@@ -3,6 +3,11 @@ using UnityEngine;
 public class directMeleeEnemy : enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [SerializeField] SpriteRenderer _sprite;
+
+
+
     new void Start()
     {
         spriteColor = GetComponent<SpriteRenderer>().color;
@@ -20,6 +25,16 @@ public class directMeleeEnemy : enemy
 
         _movement_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
+
+        if (_rigidbody.linearVelocityX < 0)
+        {
+            _sprite.flipX = true;
+        }
+        else
+        {
+            _sprite.flipX = false;
+        }
+
     }
 
 

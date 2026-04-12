@@ -16,6 +16,7 @@ public class circularProjectileEnemy : enemy
     [SerializeField] GameObject _projectile;
     [SerializeField] float _seconds_between_projectiles = 1;
     [SerializeField] float _projectile_spawn_multiplier = 1.2f;
+    [SerializeField] SpriteRenderer _sprite;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,6 +79,15 @@ public class circularProjectileEnemy : enemy
         {
             _projectile_timer = _seconds_between_projectiles;
             _fireAtTarget();
+        }
+
+        if (_rigidbody.linearVelocityX < 0)
+        {
+            _sprite.flipX = true;
+        }
+        else
+        {
+            _sprite.flipX = false;
         }
 
 

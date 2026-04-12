@@ -150,6 +150,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 7183500854814423468}
 --- !u!61 &8507181870418218489
 BoxCollider2D:
   m_ObjectHideFlags: 0

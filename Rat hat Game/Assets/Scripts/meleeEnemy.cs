@@ -4,6 +4,7 @@ public class meleeEnemy : enemy
 {
 
     [SerializeField] float _movement_curve_flatenning_factor;
+    [SerializeField] SpriteRenderer _sprite;
 
     private float _minimum_height;
     private float _curve_center_x;
@@ -29,6 +30,16 @@ public class meleeEnemy : enemy
 
         _movement_timer -= Time.deltaTime;
         _force_capping_timer -= Time.deltaTime;
+
+        if (_rigidbody.linearVelocityX < 0)
+        {
+            _sprite.flipX = true;
+        }
+        else
+        {
+            _sprite.flipX = false;
+        }
+
     }
 
 

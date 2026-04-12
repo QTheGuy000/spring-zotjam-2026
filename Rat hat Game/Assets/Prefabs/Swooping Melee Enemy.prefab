@@ -145,6 +145,7 @@ MonoBehaviour:
   isDead: 0
   isActive: 0
   _movement_curve_flatenning_factor: 15
+  _sprite: {fileID: 8560842156626125377}
 --- !u!61 &4449903085563762158
 BoxCollider2D:
   m_ObjectHideFlags: 0

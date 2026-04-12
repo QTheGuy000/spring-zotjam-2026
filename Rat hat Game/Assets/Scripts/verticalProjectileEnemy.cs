@@ -14,7 +14,7 @@ public class verticalProjectileEnemy : enemy
     [SerializeField] GameObject _projectile;
     [SerializeField] float _seconds_between_projectiles = 1;
     [SerializeField] float _projectile_spawn_multiplier = 1.2f;
-
+    [SerializeField] SpriteRenderer _sprite;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
@@ -45,6 +45,14 @@ public class verticalProjectileEnemy : enemy
             _fireAtTarget();
         }
 
+        if (_rigidbody.linearVelocityX < 0)
+        {
+            _sprite.flipX = true;
+        }
+        else
+        {
+            _sprite.flipX = false;
+        }
 
     }
 
