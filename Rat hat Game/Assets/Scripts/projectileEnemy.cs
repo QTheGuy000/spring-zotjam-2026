@@ -26,7 +26,7 @@ public class ProjectileEnemy : enemy
         base.Start();
         _projectile_timer = _seconds_between_projectiles;
         _force_capping_timer = _seconds_between_force_capping;
-        _base_y = transform.position.y;
+        _base_y = Random.Range(0f, 4f);
     }
 
     // Update is called once per frame

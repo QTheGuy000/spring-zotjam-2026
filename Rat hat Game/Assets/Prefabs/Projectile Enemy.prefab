@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileEnemy
   _vertical_acceleration_multiplier: 1.5
   _horizontal_acceleration_multiplier: 1
-  _seconds_between_force_capping: 0
+  _seconds_between_force_capping: 1
   _seconds_between_movement_change: 2
   _movement_speed: 3
   _rigidbody: {fileID: 3628431436922566676}
