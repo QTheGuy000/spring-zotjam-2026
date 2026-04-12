@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::projectile
   _lifespan: 10
-  _movement_speed: 4
-  _min_movement_speed: 4
+  _movement_speed: 2
+  _min_movement_speed: 2
   _seconds_of_homing_time: 2
   _homing: 0
   _rotating: 0
