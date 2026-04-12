@@ -19,6 +19,7 @@ public class verticalMeleeEnemy : enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteColor = GetComponent<SpriteRenderer>().color;
         _target = gameController.instance.player;
         _seconds_between_force_capping = 3f;
     }

@@ -27,17 +27,13 @@ public class enemy : MonoBehaviour
     [SerializeField] protected float _movement_speed = 3f;
     [SerializeField] protected Rigidbody2D _rigidbody;
     public float chaos_factor = 0;
-    private Color spriteColor;
+    public Color spriteColor;
 
     // Main Stats
     [SerializeField] protected int _health = 2;
     public bool isDead = false;
     public bool isActive = false;
     
-    
-    public void Start(){
-        spriteColor = GetComponent<SpriteRenderer>().color;
-    }
 
     void CheckHealth()
     {

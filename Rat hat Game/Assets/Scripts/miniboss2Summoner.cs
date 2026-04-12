@@ -28,6 +28,7 @@ public class miniboss2Summoner : enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteColor = GetComponent<SpriteRenderer>().color;
         _summon_timer = _seconds_between_summon;
         _force_capping_timer = _seconds_between_force_capping;
 

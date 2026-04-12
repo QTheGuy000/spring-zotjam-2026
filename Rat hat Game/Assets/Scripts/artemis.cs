@@ -5,7 +5,8 @@ public class artemis : enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        spriteColor = GetComponent<SpriteRenderer>().color;
+
     }
 
     // Update is called once per frame
