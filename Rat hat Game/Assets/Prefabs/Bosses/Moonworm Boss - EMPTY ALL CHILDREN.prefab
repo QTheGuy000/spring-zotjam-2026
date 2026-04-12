@@ -148,6 +148,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 1636837123087072282}
 --- !u!61 &758977652900166608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 6413031929727023630}
 --- !u!61 &3447779025189484692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -536,6 +538,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 2712444708062895891}
 --- !u!61 &15903775634193521
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -730,6 +733,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 1958948393365064081}
 --- !u!61 &1490350997161726956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -924,6 +928,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 3511439942013901371}
 --- !u!61 &4351545629562483475
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1156,6 +1161,7 @@ MonoBehaviour:
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 1948359242926327710}
 --- !u!61 &8167726164822268290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1353,6 +1359,7 @@ MonoBehaviour:
   _projectile: {fileID: 5015027509498084559, guid: a62f1d4ff4d34c6409abaf400b504169, type: 3}
   _seconds_between_projectiles: 2
   _projectile_spawn_multiplier: 1.2
+  _sprite: {fileID: 3819921108080926020}
 --- !u!58 &5930396631364752387
 CircleCollider2D:
   m_ObjectHideFlags: 0
