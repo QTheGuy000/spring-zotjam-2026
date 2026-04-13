@@ -30,10 +30,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4Scene.unity
     guid: 48958bda1fb7eb24abcdfc79a103ee40
   - enabled: 1
-    path: Assets/Scenes/Level5Scene.unity
+    path: Assets/Scenes/Level5Sceneff.unity
     guid: da7c2e4b155625e4a9da7d15a9bf7d1b
   - enabled: 1
-    path: Assets/Scenes/Level6Scene.unity
+    path: Assets/Scenes/Level5Scene.unity
     guid: 4477d88f0f589c64d994e1b21bfb0b0c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
