@@ -4401,7 +4401,7 @@ MonoBehaviour:
   isTransitioning: 0
   lincolnDialogue: {fileID: 1190761993}
   levelTransitionCloud: {fileID: 977806278}
-  moon: {fileID: 0}
+  moon: {fileID: 1585461397}
   isMiniBoss: 0
 --- !u!4 &1524977322
 Transform:
