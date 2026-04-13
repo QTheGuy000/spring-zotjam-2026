@@ -4677,6 +4677,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5213989696306572161, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
+      propertyPath: _health
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8593917732205555454, guid: 751ed10e9471a7e4197163ebdbbb3428, type: 3}
       propertyPath: m_Name
       value: Artmeis II
