@@ -5841,7 +5841,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 4873666555535560061}
   chaos_factor: 0
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
-  _health: 10
+  _health: 6
   isDead: 0
   isActive: 0
   _radius: 2
@@ -5877,7 +5877,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 8976825406504170392}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 900747515498650963}
 --- !u!4 &2456414556964951947
@@ -5993,7 +5993,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 5768579198754126446}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 4581187422936645210}
 --- !u!61 &2962263987403996721
@@ -6205,7 +6205,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 3726608625338448255}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 3605982728840678353}
 --- !u!4 &4041268852478057160
@@ -6263,7 +6263,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 7008541977996428903}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 3615657573537007070}
 --- !u!114 &4387688190764378216
@@ -6291,7 +6291,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 5881989284618332743}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 1846395605769623675}
 --- !u!61 &4434455006805987756
@@ -6745,7 +6745,7 @@ MonoBehaviour:
   isActive: 0
   leader: {fileID: 7497389388620998858}
   _projectile: {fileID: 1389802379726458061, guid: f0368c0134211074b93e34e9fff53d35, type: 3}
-  _seconds_between_projectiles: 1
+  _seconds_between_projectiles: 2.5
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 8204214434507995214}
 --- !u!50 &7852422476495907574
