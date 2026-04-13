@@ -4033,7 +4033,7 @@ MonoBehaviour:
   isTransitioning: 0
   lincolnDialogue: {fileID: 1190761993}
   levelTransitionCloud: {fileID: 977806278}
-  moon: {fileID: 0}
+  moon: {fileID: 1585461397}
   isMiniBoss: 0
 --- !u!4 &1524977322
 Transform:
@@ -5306,7 +5306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2102017683
 RectTransform:
   m_ObjectHideFlags: 0

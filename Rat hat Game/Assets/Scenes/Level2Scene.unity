@@ -4075,7 +4075,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 21783d8102139614f973c1a8a471992e, type: 3}
+  m_Resource: {fileID: 8300000, guid: b8a8dda1629cf2240a328044aeef02ad, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -5044,7 +5044,6 @@ MonoBehaviour:
   dialogues: []
   timeBtwnChars: 0.05
   timeBtwnWords: 0.05
-  timeBtwnDialogues: 0
 --- !u!1 &1873649168
 GameObject:
   m_ObjectHideFlags: 0
