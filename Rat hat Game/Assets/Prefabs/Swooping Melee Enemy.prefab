@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::meleeEnemy
   _vertical_acceleration_multiplier: 30
-  _horizontal_acceleration_multiplier: 8
+  _horizontal_acceleration_multiplier: 4
   _seconds_between_force_capping: 0
   _seconds_between_movement_change: 4
   _movement_speed: 8
