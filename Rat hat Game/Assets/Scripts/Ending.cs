@@ -1,25 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Ending : MonoBehaviour
 {
-
-    [SerializeField] SpriteRenderer _sprite;
     [SerializeField] Sprite _sprite1;
     [SerializeField] Sprite _sprite2;
-    [SerializeField] GameObject _artemis;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _sprite.enabled = false;
+        Image img = GetComponent<Image>();
 
-        if (Random.Range(0, 1) ==1)
+        if (Random.Range(0, 1) == 1)
         {
-            _sprite.sprite = _sprite1;
+            img.sprite = _sprite1;
         }
         else
         {
-            _sprite.sprite = _sprite2;
+            img.sprite = _sprite2;
         }
 
     }
@@ -27,9 +25,8 @@ public class Ending : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_artemis == null)
-        {
-            _sprite.enabled = true;
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space)){
+            SceneManager.LoadScene("MenuScreen");
         }
     }
 }

@@ -86,8 +86,11 @@ public class enemy : MonoBehaviour
     void Die(){
         isDead = true;
         isActive = false;
-        gameObject.SetActive(false);
-        // Explosion
+        Death death = GetComponent<Death>();
+        if (death != null)
+            death.Play(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4805291879158925436}
   - component: {fileID: 5213989696306572161}
   - component: {fileID: 4785527636625795486}
+  - component: {fileID: -3668402422884155357}
   m_Layer: 8
   m_Name: Artmeis II
   m_TagString: Enemy
@@ -200,3 +201,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.0000014305115}
   m_Size: {x: 1.27, y: 0.9}
   m_Direction: 1
+--- !u!114 &-3668402422884155357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593917732205555454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}

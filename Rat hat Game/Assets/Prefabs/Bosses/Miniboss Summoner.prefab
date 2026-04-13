@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 3305355027225318428}
   - component: {fileID: 5658248281200634922}
   - component: {fileID: 1818969774717751696}
+  - component: {fileID: -7061463599876582617}
   m_Layer: 8
   m_Name: Miniboss Summoner
   m_TagString: Enemy
@@ -401,6 +402,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 7.34, y: 3.95}
   m_EdgeRadius: 0
+--- !u!114 &-7061463599876582617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309471820411828544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &2461129234756612783
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8265661215910096211}
   - component: {fileID: 1127832110965180054}
   - component: {fileID: 758977652900166608}
+  - component: {fileID: 2788931595526042302}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy
   m_TagString: Enemy
@@ -195,6 +196,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &2788931595526042302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914876244115241791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &3451332155958800791
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +229,7 @@ GameObject:
   - component: {fileID: 6932063565806991590}
   - component: {fileID: 5031679328963707534}
   - component: {fileID: 3447779025189484692}
+  - component: {fileID: 8849940660642927788}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (5)
   m_TagString: Enemy
@@ -390,6 +412,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &8849940660642927788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451332155958800791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &4695144369595837066
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +445,7 @@ GameObject:
   - component: {fileID: 7208131624659904198}
   - component: {fileID: 3992782058525799769}
   - component: {fileID: 15903775634193521}
+  - component: {fileID: 4294922497262156262}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (4)
   m_TagString: Enemy
@@ -585,6 +628,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &4294922497262156262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695144369595837066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &5217355070605280295
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +661,7 @@ GameObject:
   - component: {fileID: 6299050713233463316}
   - component: {fileID: 2275141174611094266}
   - component: {fileID: 1490350997161726956}
+  - component: {fileID: 1922315033696594205}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (1)
   m_TagString: Enemy
@@ -780,6 +844,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &1922315033696594205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217355070605280295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &6174580387063738840
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +877,7 @@ GameObject:
   - component: {fileID: 5034456640207857846}
   - component: {fileID: 1567428768661318184}
   - component: {fileID: 4351545629562483475}
+  - component: {fileID: 1806819666973533908}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (3)
   m_TagString: Enemy
@@ -975,6 +1060,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &1806819666973533908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174580387063738840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &6631750956463254956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1131,7 @@ GameObject:
   - component: {fileID: 965893422544193900}
   - component: {fileID: 1282414316550139222}
   - component: {fileID: 8167726164822268290}
+  - component: {fileID: 2153895956472727925}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (2)
   m_TagString: Enemy
@@ -1208,6 +1314,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &2153895956472727925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684511385007335431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &8730948295558740014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1347,7 @@ GameObject:
   - component: {fileID: 7675874195728813885}
   - component: {fileID: 3755554695534843619}
   - component: {fileID: 5930396631364752387}
+  - component: {fileID: 4509905712601715364}
   m_Layer: 8
   m_Name: Worm Head
   m_TagString: Enemy
@@ -1396,3 +1523,23 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &4509905712601715364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8730948295558740014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2862282824736847861}
   - component: {fileID: 3685861964360950550}
   - component: {fileID: 8465270598709781511}
+  - component: {fileID: -13152692761839013}
   m_Layer: 0
   m_Name: Homing Projectile
   m_TagString: Projectile
@@ -181,3 +182,15 @@ MonoBehaviour:
   _initial_lock_on: 1
   starting_angle: 0
   _rigidbody: {fileID: 2862282824736847861}
+--- !u!114 &-13152692761839013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389802379726458061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

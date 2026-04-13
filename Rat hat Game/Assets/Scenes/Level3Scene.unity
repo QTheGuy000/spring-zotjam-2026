@@ -2296,7 +2296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141792617}
   m_Layer: 0
-  m_Name: Level 9
+  m_Name: Stage 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4011,7 +4011,7 @@ GameObject:
   - component: {fileID: 1524977322}
   - component: {fileID: 1524977321}
   m_Layer: 0
-  m_Name: Levels
+  m_Name: Stages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4045,6 +4045,7 @@ MonoBehaviour:
   levelTransitionCloud: {fileID: 1147729096}
   moon: {fileID: 823324182}
   isMiniBoss: 0
+  levelNum: 3
 --- !u!4 &1524977322
 Transform:
   m_ObjectHideFlags: 0
@@ -5794,7 +5795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043907327}
   m_Layer: 0
-  m_Name: Level 8
+  m_Name: Stage 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3628431436922566676}
   - component: {fileID: 9075023115376287818}
   - component: {fileID: 437485021904276926}
+  - component: {fileID: -1123674674164301164}
   m_Layer: 8
   m_Name: Still Projectile Enemy
   m_TagString: Enemy
@@ -197,3 +198,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.37}
   m_EdgeRadius: 0
+--- !u!114 &-1123674674164301164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945344061379124843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}

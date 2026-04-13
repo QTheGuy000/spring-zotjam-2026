@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8905878912415123297}
   - component: {fileID: 876609182189849331}
   - component: {fileID: 2606227137612769390}
+  - component: {fileID: 5443512412424592296}
   m_Layer: 8
   m_Name: Vertical Melee Enemy
   m_TagString: Enemy
@@ -190,3 +191,23 @@ MonoBehaviour:
   _health: 2
   isDead: 0
   isActive: 0
+--- !u!114 &5443512412424592296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064401263623825171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}

@@ -52,9 +52,12 @@ public class LevelManager : MonoBehaviour
 
     public bool isMiniBoss = false;
 
+    public int levelNum;
+
     private void Awake()
     {
         currentStage = Statistics.CurrentStage;
+        Statistics.CurrentLevel = levelNum;
 
         // Acts liek Static class
         if (instance == null)
@@ -105,6 +108,7 @@ public class LevelManager : MonoBehaviour
 
         // At the end of Awake, after other setup:
         moon.transform.localScale = new Vector3(Statistics.MoonScale, Statistics.MoonScale, Statistics.MoonScale);
+        
     }
 
     void Start()
@@ -240,6 +244,12 @@ public class LevelManager : MonoBehaviour
             levelComplete = true;
             Statistics.CurrentLevel += 1;
             Statistics.CurrentStage = 0;
+
+            if (Statistics.CurrentLevel > Statistics.Levels){
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene("EndScreen");
+                yield break;
+            }
 
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("Level" + Statistics.CurrentLevel + "Scene");

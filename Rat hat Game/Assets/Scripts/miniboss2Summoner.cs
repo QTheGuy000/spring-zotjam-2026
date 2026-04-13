@@ -94,7 +94,7 @@ public class miniboss2Summoner : enemy
 
 
                 vanguard._vanguard_rigidbody.MovePosition(new Vector2(x_position, y_position));
-                Debug.Log(_list_of_vanguard_angles[i]);
+                //Debug.Log(_list_of_vanguard_angles[i]);
 
 
             }

@@ -4403,6 +4403,7 @@ MonoBehaviour:
   levelTransitionCloud: {fileID: 977806278}
   moon: {fileID: 1585461397}
   isMiniBoss: 0
+  levelNum: 1
 --- !u!4 &1524977322
 Transform:
   m_ObjectHideFlags: 0

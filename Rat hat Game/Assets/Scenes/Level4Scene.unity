@@ -4086,6 +4086,7 @@ MonoBehaviour:
   levelTransitionCloud: {fileID: 977806278}
   moon: {fileID: 1585461397}
   isMiniBoss: 1
+  levelNum: 4
 --- !u!4 &1524977322
 Transform:
   m_ObjectHideFlags: 0
@@ -5100,7 +5101,6 @@ MonoBehaviour:
   dialogues: []
   timeBtwnChars: 0.05
   timeBtwnWords: 0.05
-  timeBtwnDialogues: 0
 --- !u!1 &1873649168
 GameObject:
   m_ObjectHideFlags: 0

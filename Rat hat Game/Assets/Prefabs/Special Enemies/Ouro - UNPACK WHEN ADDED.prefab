@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1383211638120203747}
   - component: {fileID: 3021759189990931556}
   - component: {fileID: 3360548636606996804}
+  - component: {fileID: 503050261181374804}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (1)
   m_TagString: Enemy
@@ -185,6 +186,26 @@ MonoBehaviour:
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 0}
+--- !u!114 &503050261181374804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642354260874799732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &1897476868716944442
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +254,7 @@ GameObject:
   - component: {fileID: 4394900785064347401}
   - component: {fileID: 5987494346641652456}
   - component: {fileID: 5225373309980665729}
+  - component: {fileID: 8178058111356919882}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (2)
   m_TagString: Enemy
@@ -405,6 +427,26 @@ MonoBehaviour:
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 0}
+--- !u!114 &8178058111356919882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030796660700246890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &7472408792957309428
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +460,7 @@ GameObject:
   - component: {fileID: 7948629909289875168}
   - component: {fileID: 7786250378758829456}
   - component: {fileID: 4743744926598129548}
+  - component: {fileID: 8458783707780879444}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy
   m_TagString: Enemy
@@ -590,6 +633,26 @@ MonoBehaviour:
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 0}
+--- !u!114 &8458783707780879444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472408792957309428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
 --- !u!1 &8439018029249848606
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +666,7 @@ GameObject:
   - component: {fileID: 582925938665458661}
   - component: {fileID: 317064777686181419}
   - component: {fileID: 8911682679722168221}
+  - component: {fileID: 4055027926622942391}
   m_Layer: 8
   m_Name: Follow Leader Projectile Enemy (3)
   m_TagString: Enemy
@@ -775,3 +839,23 @@ MonoBehaviour:
   _seconds_between_projectiles: 1
   _projectile_spawn_multiplier: 1.2
   _sprite: {fileID: 0}
+--- !u!114 &4055027926622942391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439018029249848606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ebccfb475b4764a98f1d918384f301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  deathEffect:
+  - {fileID: -8092295105046505211, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -5243772346084840235, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4009157606203222040, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 3730887761424324059, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -4927540249515241657, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: 5684552838703836615, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
+  - {fileID: -1000500801407918923, guid: a8f7d3c890a3683439c5cbf002975bd4, type: 3}
