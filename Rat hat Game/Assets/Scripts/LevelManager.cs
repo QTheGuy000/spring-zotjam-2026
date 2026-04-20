@@ -251,8 +251,16 @@ public class LevelManager : MonoBehaviour
                 yield break;
             }
 
+            // Next Level
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("Level" + Statistics.CurrentLevel + "Scene");
+            string difficulty = "";
+            if (Statistics.difficulty == "Easy"){
+                difficulty = "Easy";
+            }
+            else if (Statistics.difficulty == "Hard"){
+                difficulty = "Hard";
+            }
+            SceneManager.LoadScene(difficulty + "Level" + Statistics.CurrentLevel + "Scene");
             yield break;
         }
 

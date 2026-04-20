@@ -136,7 +136,7 @@ public class CutsceneManager : MonoBehaviour
     public IEnumerator StartGame()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Level1Scene");
+        SceneManager.LoadScene("ModeSelectScene");
     }
 
 }

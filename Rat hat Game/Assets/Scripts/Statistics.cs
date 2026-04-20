@@ -13,4 +13,6 @@ public static class Statistics
 
     public static float MoonScale = 1f;      // Persists across levels
 
+    public static string difficulty = "Normal"; // "Easy", "Normal", "Hard"
+
 }

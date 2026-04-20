@@ -30,7 +30,7 @@ public class enemy : MonoBehaviour
     public Color spriteColor;
 
     // Main Stats
-    [SerializeField] protected int _health = 2;
+    [SerializeField] public int _health = 2;
     public bool isDead = false;
     public bool isActive = false;
     

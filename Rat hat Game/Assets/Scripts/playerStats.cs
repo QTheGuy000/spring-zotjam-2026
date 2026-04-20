@@ -14,7 +14,7 @@ public class playerStats : MonoBehaviour
     private List<Image> heartImages = new();
     private Color spriteColor;
     private float _invincibility_time = 0;
-    private float _max_invincibility_time = 0.25f;
+    private float _max_invincibility_time = 1f;
     private float _enemy_collision_time = 0;
     public Sprite lostHeart;
 

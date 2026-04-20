@@ -55,6 +55,14 @@ public class playerMovement : MonoBehaviour
         }
 
         moveVelocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveAmount, rb.linearVelocityY);
+        // Changes facing direction.
+        if (moveVelocity.x > 0){
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (moveVelocity.x < 0){
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Input.GetAxisRaw("Horizontal") != 0 && dashReady)
         {
             dashVelocity = new Vector2(dashAmount * Input.GetAxisRaw("Horizontal"), 0);
